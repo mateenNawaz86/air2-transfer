@@ -1,5 +1,5 @@
 {
-  "name": "air2-transfer",
+  "name": "jet2-transport",
   "version": "0.1.0",
   "private": true,
   "scripts": {
@@ -16,8 +16,10 @@
     "@supabase/ssr": "^0.6.1",
     "@supabase/supabase-js": "^2.55.0",
     "@types/google.maps": "^3.58.1",
+    "html2canvas": "^1.4.1",
+    "jspdf": "^3.0.3",
     "lucide-react": "^0.263.1",
-    "next": "^15.5.23",
+    "next": "15.0.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "resend": "^6.1.2",
