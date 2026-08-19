@@ -26,7 +26,7 @@ export default function NotFound() {
           
           <div className="text-gray-400 text-sm">
             <p>Need help? Contact us at:</p>
-            <p className="text-blue-400">info@jet2transport.com</p>
+            <p className="text-blue-400">info@air2transport.com</p>
             <p className="text-blue-400">01213141080</p>
           </div>
         </div>

@@ -258,7 +258,7 @@ export default function BirminghamChauffeurTourPage() {
             </div>
             <div className="flex items-center">
               <Mail className="h-5 w-5 mr-2" />
-              <span>info@jet2transport.com</span>
+              <span>info@air2transport.com</span>
             </div>
           </div>
         </div>

@@ -455,7 +455,7 @@ export async function sendAdminBookingNotification(
   // Use NEXT_PUBLIC_ prefix for client-side access
   const adminEmail = (typeof window !== 'undefined' 
     ? process.env.NEXT_PUBLIC_ADMIN_EMAIL 
-    : process.env.ADMIN_EMAIL) || 'info@jet2transport.com'
+    : process.env.ADMIN_EMAIL) || 'info@air2transport.com'
   
   const subject = 'New Booking Received - Air2 Transport'
 

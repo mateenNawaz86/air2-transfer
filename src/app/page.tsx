@@ -747,7 +747,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center text-jet2-gray">
                   <Mail className="h-5 w-5 mr-2 text-jet2-orange" />
-                  <span>info@jet2transport.com</span>
+                  <span>info@air2transport.com</span>
                 </div>
               </div>
             </div>

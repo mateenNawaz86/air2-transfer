@@ -56,7 +56,7 @@ export default function ContactPage() {
     {
       icon: Mail,
       title: 'Email',
-      details: 'info@jet2transport.com',
+      details: 'info@air2transport.com',
       subtitle: 'Quick response guaranteed'
     },
     {
@@ -245,7 +245,7 @@ export default function ContactPage() {
                     <Mail className="h-6 w-6 text-jet2-orange mr-3 mt-1" />
                     <div>
                       <p className="font-semibold text-jet2-dark">Email</p>
-                      <p className="text-jet2-gray">info@jet2transport.com</p>
+                      <p className="text-jet2-gray">info@air2transport.com</p>
                       <p className="text-sm text-jet2-gray">Quick response guaranteed</p>
                     </div>
                   </div>

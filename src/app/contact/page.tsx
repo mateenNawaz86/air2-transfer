@@ -110,7 +110,7 @@ export default function ContactPage() {
                 <Mail className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-xl font-semibold mb-3">Email</h3>
-              <p className="text-gray-600 mb-2">info@jet2transport.com</p>
+              <p className="text-gray-600 mb-2">info@air2transport.com</p>
             </div>
 
             <div className="bg-white p-8 rounded-lg shadow-lg text-center">

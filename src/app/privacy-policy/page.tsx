@@ -67,7 +67,7 @@ export default function PrivacyPolicyPage() {
             </p>
             <div className="bg-gray-50 p-4 rounded-lg">
               <p className="text-gray-700">
-                <strong>Email:</strong> info@jet2transport.com<br />
+                <strong>Email:</strong> info@air2transport.com<br />
                 <strong>Phone:</strong> 01213141080<br />
                 <strong>Address:</strong> Birmingham, UK
                 </p>
