@@ -96,7 +96,7 @@ html {
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
 }
 
@@ -107,7 +107,7 @@ html {
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: none;
   }
 }
 
@@ -118,7 +118,7 @@ html {
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: none;
   }
 }
 
@@ -129,7 +129,7 @@ html {
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
 }
 
@@ -140,7 +140,7 @@ html {
   }
   to {
     opacity: 1;
-    transform: translateY(0);
+    transform: none;
   }
 }
 
@@ -151,7 +151,7 @@ html {
   }
   to {
     opacity: 1;
-    transform: scale(1);
+    transform: none;
   }
 }
 
@@ -162,7 +162,7 @@ html {
   }
   to {
     opacity: 1;
-    transform: rotate(0deg) scale(1);
+    transform: none;
   }
 }
 
@@ -180,7 +180,7 @@ html {
   }
   100% {
     opacity: 1;
-    transform: scale(1);
+    transform: none;
   }
 }
 
@@ -264,6 +264,38 @@ html {
   animation: glow 2s ease-in-out infinite;
 }
 
+/* Keep entrance-animated content visible if the animation never runs
+   (reduced-motion preference, or a fill-mode/timing edge case) */
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-in,
+  .animate-slide-in-left,
+  .animate-slide-in-right,
+  .animate-slide-up,
+  .animate-slide-down,
+  .animate-scale-in,
+  .animate-rotate-in,
+  .animate-bounce-in {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .animate-pulse,
+  .animate-float,
+  .animate-glow {
+    animation: none;
+  }
+
+  .animate-on-scroll,
+  .animate-on-scroll-left,
+  .animate-on-scroll-right,
+  .animate-on-scroll-scale {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
 /* Staggered Animation Delays */
 .animate-delay-100 {
   animation-delay: 0.1s;
@@ -306,7 +338,7 @@ html {
 
 .animate-on-scroll.animate-visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }
 
 .animate-on-scroll-left {
@@ -317,7 +349,7 @@ html {
 
 .animate-on-scroll-left.animate-visible {
   opacity: 1;
-  transform: translateX(0);
+  transform: none;
 }
 
 .animate-on-scroll-right {
@@ -328,7 +360,7 @@ html {
 
 .animate-on-scroll-right.animate-visible {
   opacity: 1;
-  transform: translateX(0);
+  transform: none;
 }
 
 .animate-on-scroll-scale {
@@ -339,7 +371,7 @@ html {
 
 .animate-on-scroll-scale.animate-visible {
   opacity: 1;
-  transform: scale(1);
+  transform: none;
 }
 
 /* Custom button styles */

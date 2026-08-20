@@ -103,4 +103,13 @@ temp/
 *.ntvs*
 *.njsproj
 *.sln
-*.sw? 
+*.sw?
+
+# Playwright (keep tests/visual/__screenshots__ — those are committed baselines)
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# TypeScript incremental build cache
+*.tsbuildinfo

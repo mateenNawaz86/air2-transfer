@@ -269,7 +269,7 @@ export default function Home() {
   return (
     <div className="min-h-screen">
       {/* Hero Section with Two Columns */}
-      <section className="relative h-screen flex overflow-hidden">
+      <section className="relative isolate h-screen flex overflow-hidden">
         {/* Background Image covering entire section */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -312,14 +312,14 @@ export default function Home() {
       </section>
 
       {/* Top-Rated Service Section */}
-      <section className="py-20 bg-white">
+      <section className="relative z-10 py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             ref={aboutAnimation.elementRef}
             className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
           >
             <div className={`transition-all duration-1200 ${
-              aboutAnimation.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
+              aboutAnimation.isVisible ? 'opacity-100' : 'opacity-0 -translate-x-8'
             }`}>
               <h2 className="text-4xl font-bold text-jet2-dark mb-6">
                 Your Go-To Choice for Transfers Across the UK
@@ -341,7 +341,7 @@ export default function Home() {
               </div>
             </div>
             <div className={`relative h-96 rounded-2xl overflow-hidden shadow-lg transition-all duration-1200 delay-300 ${
-              aboutAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              aboutAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
             }`}>
               <img
                 src="https://assetshost.sirv.com/jet2transport/3.jpg"
@@ -355,7 +355,7 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="py-20 bg-jet2-light">
+      <section className="relative z-10 py-20 bg-jet2-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             ref={servicesAnimation.elementRef}
@@ -413,7 +413,7 @@ export default function Home() {
       </section>
 
       {/* Why Choose Us Section */}
-      <section className="py-20 bg-white">
+      <section className="relative z-10 py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             ref={whyChooseAnimation.elementRef}
@@ -451,7 +451,7 @@ export default function Home() {
       </section>
 
       {/* Fleet Section */}
-      <section className="py-20 bg-jet2-light">
+      <section className="relative z-10 py-20 bg-jet2-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             ref={fleetAnimation.elementRef}
@@ -513,7 +513,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section className="py-20 bg-white">
+      <section className="relative z-10 py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             ref={testimonialsAnimation.elementRef}
@@ -569,7 +569,7 @@ export default function Home() {
       </section>
 
       {/* Coverage Areas Section */}
-      <section className="py-20 bg-jet2-light">
+      <section className="relative z-10 py-20 bg-jet2-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             ref={citiesAnimation.elementRef}
@@ -619,7 +619,7 @@ export default function Home() {
           <div 
             ref={airportsAnimation.elementRef}
             className={`text-center mb-16 transition-all duration-1200 ${
-              airportsAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              airportsAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
             }`}
           >
             <h2 className="text-4xl font-bold text-jet2-dark mb-4">Airport Transfers</h2>
@@ -631,7 +631,7 @@ export default function Home() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {airports.map((airport, index) => (
               <div key={index} className={`text-center transition-all duration-1000 ${
-                airportsAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                airportsAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
               }`} style={{transitionDelay: `${index * 0.15}s`}}>
                 <div className="w-16 h-16 bg-jet2-orange rounded-full flex items-center justify-center mx-auto mb-3 hover:scale-110 transition-transform duration-300">
                   <Plane className="h-8 w-8 text-white" />
@@ -644,12 +644,12 @@ export default function Home() {
       </section>
 
       {/* Why Choose NET Features */}
-      <section className="py-20 bg-white">
+      <section className="relative z-10 py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             ref={featuresAnimation.elementRef}
             className={`text-center mb-16 transition-all duration-1200 ${
-              featuresAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              featuresAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
             }`}
           >
             <h2 className="text-4xl font-bold text-jet2-dark mb-4">Why Choose Air2Transport</h2>
@@ -663,7 +663,7 @@ export default function Home() {
               const Icon = feature.icon
               return (
                 <div key={index} className={`text-center group transition-all duration-1000 ${
-                  featuresAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+                  featuresAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
                 }`} style={{transitionDelay: `${index * 0.2}s`}}>
                   <div className="w-16 h-16 bg-jet2-orange rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                     <Icon className="h-8 w-8 text-white" />
@@ -678,12 +678,12 @@ export default function Home() {
       </section>
 
       {/* Instant Quote Section */}
-      <section className="py-20 bg-jet2-light">
+      <section className="relative z-10 py-20 bg-jet2-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div 
             ref={quoteAnimation.elementRef}
             className={`text-center mb-12 transition-all duration-1200 ${
-              quoteAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              quoteAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
             }`}
           >
             <h2 className="text-4xl font-bold text-jet2-dark mb-4">Get an Instant Quote</h2>
@@ -693,11 +693,11 @@ export default function Home() {
           </div>
           
           <div className={`max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8 transition-all duration-1200 delay-300 ${
-            quoteAnimation.isVisible ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 translate-y-8 scale-95'
+            quoteAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8 scale-95'
           }`}>
             <form className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className={`transition-all duration-1000 delay-500 ${
-                quoteAnimation.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
+                quoteAnimation.isVisible ? 'opacity-100' : 'opacity-0 -translate-x-8'
               }`}>
                 <label className="block text-sm font-medium text-jet2-dark mb-2">Pickup Location</label>
                 <input
@@ -707,7 +707,7 @@ export default function Home() {
                 />
               </div>
               <div className={`transition-all duration-1000 delay-700 ${
-                quoteAnimation.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-8'
+                quoteAnimation.isVisible ? 'opacity-100' : 'opacity-0 -translate-x-8'
               }`}>
                 <label className="block text-sm font-medium text-jet2-dark mb-2">Drop-off Location</label>
                 <input
@@ -717,7 +717,7 @@ export default function Home() {
                 />
               </div>
               <div className={`transition-all duration-1000 delay-900 ${
-                quoteAnimation.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
+                quoteAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-x-8'
               }`}>
                 <label className="block text-sm font-medium text-jet2-dark mb-2">Date & Time</label>
                 <input
@@ -726,7 +726,7 @@ export default function Home() {
                 />
               </div>
               <div className={`flex items-end transition-all duration-1000 delay-1100 ${
-                quoteAnimation.isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 translate-x-8'
+                quoteAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-x-8'
               }`}>
                 <button type="submit" className="btn-primary w-full hover:animate-pulse">
                   Get Quote
@@ -735,7 +735,7 @@ export default function Home() {
             </form>
             
             <div className={`mt-8 text-center transition-all duration-1000 delay-1300 ${
-              quoteAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+              quoteAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
             }`}>
               <p className="text-jet2-gray mb-4">
                 Get 10% Discount for advance booking - Use code: <span className="font-bold text-jet2-orange animate-pulse">JET10</span>
@@ -756,21 +756,21 @@ export default function Home() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 gradient-bg">
+      <section className="relative z-10 py-20 gradient-bg">
         <div 
           ref={ctaAnimation.elementRef}
           className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center transition-all duration-1200 ${
-            ctaAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            ctaAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
           }`}
         >
           <h2 className="text-4xl font-bold text-white mb-4">Ready to Book Your Ride?</h2>
           <p className={`text-xl text-white opacity-90 mb-8 max-w-2xl mx-auto transition-all duration-1000 delay-300 ${
-            ctaAnimation.isVisible ? 'opacity-90 translate-y-0' : 'opacity-0 translate-y-8'
+            ctaAnimation.isVisible ? 'opacity-90' : 'opacity-0 translate-y-8'
           }`}>
             Book your ride with Air2 Transport and enjoy the flexibility of standard transfers or executive chauffeur services — always reliable, always comfortable
           </p>
           <div className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-1000 delay-600 ${
-            ctaAnimation.isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'
+            ctaAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
           }`}>
             <Link href="/bookings/new/" className="bg-white text-jet2-orange hover:bg-gray-100 font-semibold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
               Book Your Ride
