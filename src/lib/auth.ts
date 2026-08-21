@@ -1,6 +1,6 @@
 import { createBrowserClient } from '@supabase/ssr'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || 'https://gvfnxloqyvmaxaxjewna.supabase.co'
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
 
 // Client-side Supabase client (for use in client components)
@@ -12,8 +12,8 @@ export const createClient = () => {
     keyLength: supabaseKey.length
   })
 
-  if (!supabaseKey) {
-    console.error('Supabase key is missing!')
+  if (!supabaseUrl || !supabaseKey) {
+    console.error('Supabase URL or key is missing!')
     // Return a mock client if no key is provided (for development)
     return {
       auth: {

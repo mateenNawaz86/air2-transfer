@@ -110,6 +110,11 @@ temp/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+supabase-user-backfill/
 
 # TypeScript incremental build cache
 *.tsbuildinfo
+
+# Local admin/debug scripts (service-role key usage, generated credentials) — never commit or ship these
+scripts/
+

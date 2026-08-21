@@ -1,11 +1,11 @@
 import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = 'https://gvfnxloqyvmaxaxjewna.supabase.co'
+const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL || ''
 const supabaseKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY || ''
 
 // Create a mock client if no key is provided (for build time and development)
 const createSupabaseClient = () => {
-  if (!supabaseKey) {
+  if (!supabaseUrl || !supabaseKey) {
     // Return a mock client for build time and development without keys
     return {
       from: () => ({

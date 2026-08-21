@@ -8,7 +8,9 @@
     "start": "next start",
     "lint": "next lint",
     "test:visual": "playwright test",
-    "test:visual:update": "playwright test --update-snapshots"
+    "test:visual:update": "playwright test --update-snapshots",
+    "set-user-password": "node scripts/set-user-password.js",
+    "backfill-auth-users": "node scripts/backfill-auth-users.js"
   },
   "dependencies": {
     "@googlemaps/js-api-loader": "^1.16.10",
