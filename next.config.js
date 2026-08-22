@@ -90,6 +90,19 @@ const nextConfig = {
       },
     ]
   },
+  // Permanent redirects for retired homepage service-card URLs that were
+  // previously linked (and so may be indexed or backlinked) but never had
+  // a real page behind them. Each maps to its replacement in
+  // src/lib/serviceRoutes.ts. Sources use the trailing slash because
+  // trailingSlash: true normalizes the bare path to this form first.
+  async redirects() {
+    return [
+      { source: '/services/corporate-travel/', destination: '/services/chauffeur-services', permanent: true },
+      { source: '/services/special-events/', destination: '/services/events-chauffeur-service', permanent: true },
+      { source: '/services/wedding-chauffeurs/', destination: '/services/events-chauffeur-service', permanent: true },
+      { source: '/services/executive-chauffeur/', destination: '/services/chauffeur-services', permanent: true },
+    ]
+  },
 }
 
 module.exports = nextConfig 

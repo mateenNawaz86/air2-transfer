@@ -6,6 +6,7 @@ import Image from 'next/image'
 import { useRouter } from 'next/navigation'
 import { Menu, X, Phone, Mail, MapPin, ChevronDown, LogOut, User, Settings } from 'lucide-react'
 import { createClient } from '@/lib/auth'
+import { SERVICE_ROUTES } from '@/lib/serviceRoutes'
 
 export default function Header() {
   const router = useRouter()
@@ -159,11 +160,11 @@ export default function Header() {
       name: 'Services',
       href: '/services',
       dropdown: [
-        { name: 'Airport Transfers', href: '/services/airport-transfers' },
-        { name: 'Chauffeur Services', href: '/services/chauffeur-services' },
-        { name: 'Events & Weddings', href: '/services/events-chauffeur-service' },
-        { name: 'City to City Transfers', href: '/services/city-to-city-transfers' },
-        { name: 'Concierge Services', href: '/services/concierge-services' }
+        { name: 'Airport Transfers', href: SERVICE_ROUTES.airportTransfers },
+        { name: 'Chauffeur Services', href: SERVICE_ROUTES.chauffeurServices },
+        { name: 'Events & Weddings', href: SERVICE_ROUTES.eventsAndWeddings },
+        { name: 'City to City Transfers', href: SERVICE_ROUTES.cityToCityTransfers },
+        { name: 'Concierge Services', href: SERVICE_ROUTES.conciergeServices }
       ]
     },
     {

@@ -9,6 +9,7 @@
     "lint": "next lint",
     "test:visual": "playwright test",
     "test:visual:update": "playwright test --update-snapshots",
+    "test:links": "playwright test --config=playwright.links.config.ts",
     "set-user-password": "node scripts/set-user-password.js",
     "backfill-auth-users": "node scripts/backfill-auth-users.js"
   },

@@ -28,6 +28,7 @@ import {
 } from 'lucide-react'
 import { useScrollAnimation, useStaggeredScrollAnimation } from '@/hooks/useScrollAnimation'
 import { useEffect } from 'react'
+import { SERVICE_ROUTES } from '@/lib/serviceRoutes'
 
 export default function Home() {
   // Animation hooks
@@ -56,42 +57,42 @@ export default function Home() {
       description: 'On time, every time',
       icon: Plane,
       image: 'https://assetshost.sirv.com/jet2transport/J2T_website_impovements.pdf-image-009.jpg',
-      link: '/services/airport-transfers'
+      link: SERVICE_ROUTES.airportTransfers
     },
     {
       title: 'Corporate Travel',
       description: 'Professional rides for business minds',
       icon: Building,
       image: 'https://assetshost.sirv.com/jet2transport/J2T_website_impovements.pdf-image-010.jpg',
-      link: '/services/corporate-travel'
+      link: SERVICE_ROUTES.chauffeurServices
     },
     {
       title: 'Event Transportation',
       description: 'Arrive in style, every occasion',
       icon: Calendar,
       image: 'https://assetshost.sirv.com/jet2transport/J2T_website_impovements.pdf-image-008.jpg',
-      link: '/services/special-events'
+      link: SERVICE_ROUTES.eventsAndWeddings
     },
     {
       title: 'Intercity Travel',
       description: 'Seamless journeys city to city',
       icon: Navigation,
       image: 'https://assetshost.sirv.com/jet2transport/J2T_website_impovements.pdf-image-007.jpg',
-      link: '/services/city-to-city'
+      link: SERVICE_ROUTES.cityToCityTransfers
     },
     {
       title: 'Wedding Transfers',
       description: 'Your perfect ride for the perfect day',
       icon: Heart,
       image: 'https://assetshost.sirv.com/jet2transport/J2T_website_impovements.pdf-image-005.jpg',
-      link: '/services/wedding-chauffeurs'
+      link: SERVICE_ROUTES.eventsAndWeddings
     },
     {
       title: 'Hourly & Full-Day Hire',
       description: 'Your car, your schedule',
       icon: Clock,
       image: 'https://assetshost.sirv.com/jet2transport/J2T_website_impovements.pdf-image-006.png',
-      link: '/services/executive-chauffeur'
+      link: SERVICE_ROUTES.chauffeurServices
     }
   ]
 
