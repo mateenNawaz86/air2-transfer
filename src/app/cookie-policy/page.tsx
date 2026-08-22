@@ -1,5 +1,12 @@
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Cookie Policy | Air2Transport',
+  description:
+    'Find out how Air2Transport uses cookies on our website and how to manage your cookie preferences.',
+}
 
 export default function CookiePolicyPage() {
   return (

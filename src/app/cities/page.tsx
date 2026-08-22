@@ -1,8 +1,7 @@
 'use client'
 
-import { useState } from 'react'
 import Link from 'next/link'
-import { Phone, Mail, MapPin, Clock, Star, CheckCircle, Car, Building } from 'lucide-react'
+import { MapPin, CheckCircle, Car, Building } from 'lucide-react'
 
 export default function CitiesPage() {
   return (

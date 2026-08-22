@@ -1,5 +1,12 @@
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Terms of Service | Air2Transport',
+  description:
+    "Read the terms and conditions that apply when you book or use Air2Transport's chauffeur and transfer services.",
+}
 
 export default function TermsOfServicePage() {
   return (

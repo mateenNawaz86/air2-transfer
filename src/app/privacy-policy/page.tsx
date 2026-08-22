@@ -1,5 +1,12 @@
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
+import type { Metadata } from 'next'
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy | Air2Transport',
+  description:
+    'Read how Air2Transport collects, uses and protects your personal information when you use our chauffeur and transfer services.',
+}
 
 export default function PrivacyPolicyPage() {
   return (

@@ -1,9 +1,29 @@
-'use client'
-
 import Link from 'next/link'
-import { Phone, Mail, MapPin, Clock, Star, CheckCircle, Car, Plane, Shield, Users } from 'lucide-react'
+import { MapPin, Clock, Users, CheckCircle, Car, Plane, Shield } from 'lucide-react'
+import type { Metadata } from 'next'
+import { notFound } from 'next/navigation'
+import { AIRPORTS, getAirportBySlug } from '@/lib/airportsData'
 
-export default function BirminghamAirportPage() {
+export function generateStaticParams() {
+  return AIRPORTS.map((airport) => ({ airport: airport.slug }))
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ airport: string }> }): Promise<Metadata> {
+  const { airport: airportSlug } = await params
+  const airport = getAirportBySlug(airportSlug)
+  if (!airport) return {}
+
+  return {
+    title: `${airport.name} Airport Transfers | Air2Transport`,
+    description: `Reliable transfers to and from ${airport.fullName}, with flight monitoring, meet-and-greet and fixed pricing. Book your ${airport.name} transfer today.`,
+  }
+}
+
+export default async function AirportPage({ params }: { params: Promise<{ airport: string }> }) {
+  const { airport: airportSlug } = await params
+  const airport = getAirportBySlug(airportSlug)
+  if (!airport) notFound()
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
@@ -11,16 +31,16 @@ export default function BirminghamAirportPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold mb-6">
-              Birmingham Airport Transfers
+              {airport.name} Airport Transfers
             </h1>
             <p className="text-xl md:text-2xl mb-8 max-w-3xl mx-auto">
-              Professional airport transfer service to and from Birmingham Airport
+              Professional airport transfer service to and from {airport.fullName}
             </p>
-            <Link 
-              href="/bookings/new" 
+            <Link
+              href="/bookings/new"
               className="bg-white text-jet2-dark px-8 py-4 rounded-lg font-semibold text-lg hover:bg-gray-100 transition-colors inline-block"
             >
-              Book Birmingham Transfer
+              Book {airport.name} Transfer
             </Link>
           </div>
         </div>
@@ -31,10 +51,10 @@ export default function BirminghamAirportPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Why Choose Our Birmingham Service?
+              Why Choose Our {airport.name} Service?
             </h2>
             <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-              Experience reliable and comfortable transfers to the Midlands' major airport
+              Experience reliable and comfortable transfers to {airport.whyChooseTagline}
             </p>
           </div>
 
@@ -72,30 +92,27 @@ export default function BirminghamAirportPage() {
         </div>
       </div>
 
-      {/* Birmingham Info Section */}
+      {/* Airport Info Section */}
       <div className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">
-                About Birmingham Airport
+                About {airport.name} Airport
               </h2>
-              <p className="text-lg text-gray-600 mb-6">
-                Birmingham Airport is the UK's seventh busiest airport and the major airport serving the Midlands. 
-                Located 6 miles east of Birmingham city center, it serves over 12 million passengers annually.
-              </p>
+              <p className="text-lg text-gray-600 mb-6">{airport.about}</p>
               <div className="space-y-4">
                 <div className="flex items-center">
                   <MapPin className="h-5 w-5 text-jet2-orange mr-3" />
-                  <span className="text-gray-700">6 miles east of Birmingham city center</span>
+                  <span className="text-gray-700">{airport.facts[0]}</span>
                 </div>
                 <div className="flex items-center">
                   <Clock className="h-5 w-5 text-jet2-orange mr-3" />
-                  <span className="text-gray-700">Approximately 15-30 minutes from Birmingham</span>
+                  <span className="text-gray-700">{airport.facts[1]}</span>
                 </div>
                 <div className="flex items-center">
                   <Users className="h-5 w-5 text-jet2-orange mr-3" />
-                  <span className="text-gray-700">1 passenger terminal</span>
+                  <span className="text-gray-700">{airport.facts[2]}</span>
                 </div>
               </div>
             </div>
@@ -111,7 +128,7 @@ export default function BirminghamAirportPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Birmingham Transfer Services
+              {airport.name} Transfer Services
             </h2>
           </div>
 
@@ -168,46 +185,18 @@ export default function BirminghamAirportPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">
-              Popular Birmingham Routes
+              Popular {airport.name} Routes
             </h2>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="border border-gray-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold mb-2 text-jet2-dark">Birmingham City</h3>
-              <p className="text-gray-600 mb-3">City center, business district</p>
-              <p className="text-sm text-gray-500">15-30 minutes</p>
-            </div>
-
-            <div className="border border-gray-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold mb-2 text-jet2-dark">Solihull</h3>
-              <p className="text-gray-600 mb-3">Business and residential area</p>
-              <p className="text-sm text-gray-500">10-20 minutes</p>
-            </div>
-
-            <div className="border border-gray-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold mb-2 text-jet2-dark">Coventry</h3>
-              <p className="text-gray-600 mb-3">Historic city and university</p>
-              <p className="text-sm text-gray-500">20-35 minutes</p>
-            </div>
-
-            <div className="border border-gray-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold mb-2 text-jet2-dark">Warwick</h3>
-              <p className="text-gray-600 mb-3">Historic town and castle</p>
-              <p className="text-sm text-gray-500">25-40 minutes</p>
-            </div>
-
-            <div className="border border-gray-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold mb-2 text-jet2-dark">Leamington Spa</h3>
-              <p className="text-gray-600 mb-3">Spa town and business center</p>
-              <p className="text-sm text-gray-500">30-45 minutes</p>
-            </div>
-
-            <div className="border border-gray-200 rounded-lg p-6">
-              <h3 className="text-lg font-semibold mb-2 text-jet2-dark">Stratford-upon-Avon</h3>
-              <p className="text-gray-600 mb-3">Shakespeare's birthplace</p>
-              <p className="text-sm text-gray-500">35-50 minutes</p>
-            </div>
+            {airport.routes.map((route) => (
+              <div key={route.name} className="border border-gray-200 rounded-lg p-6">
+                <h3 className="text-lg font-semibold mb-2 text-jet2-dark">{route.name}</h3>
+                <p className="text-gray-600 mb-3">{route.description}</p>
+                <p className="text-sm text-gray-500">{route.duration}</p>
+              </div>
+            ))}
           </div>
         </div>
       </div>
@@ -216,20 +205,20 @@ export default function BirminghamAirportPage() {
       <div className="py-16 bg-jet2-dark text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold mb-4">
-            Book Your Birmingham Transfer
+            Book Your {airport.name} Transfer
           </h2>
           <p className="text-xl mb-8 max-w-2xl mx-auto">
-            Experience professional and reliable airport transfers to and from Birmingham Airport
+            Experience professional and reliable airport transfers to and from {airport.fullName}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Link 
-              href="/bookings/new" 
+            <Link
+              href="/bookings/new"
               className="bg-jet2-orange text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-orange-600 transition-colors"
             >
               Book Now
             </Link>
-            <Link 
-              href="/contact" 
+            <Link
+              href="/contact"
               className="border border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-jet2-dark transition-colors"
             >
               Contact Us
@@ -239,4 +228,4 @@ export default function BirminghamAirportPage() {
       </div>
     </div>
   )
-} 
+}
