@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
-import type { Metadata } from 'next'
+import { buildPageMetadata } from '@/lib/pageMetadata'
 
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
+  path: '/cookie-policy/',
   title: 'Cookie Policy | Air2Transport',
   description:
     'Find out how Air2Transport uses cookies on our website and how to manage your cookie preferences.',
-  alternates: { canonical: '/cookie-policy/' },
-}
+})
 
 export default function CookiePolicyPage() {
   return (

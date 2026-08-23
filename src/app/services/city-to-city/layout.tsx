@@ -1,11 +1,11 @@
-import type { Metadata } from 'next'
+import { buildPageMetadata } from '@/lib/pageMetadata'
 
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
+  path: '/services/city-to-city/',
   title: 'City to City Long Distance Car Service | Air2Transport',
   description:
     'Comfortable long-distance car service between UK cities, with professional drivers and fixed pricing.',
-  alternates: { canonical: '/services/city-to-city/' },
-}
+})
 
 export default function CityToCityLayout({ children }: { children: React.ReactNode }) {
   return children

@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
-import type { Metadata } from 'next'
+import { buildPageMetadata } from '@/lib/pageMetadata'
 
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
+  path: '/terms-of-service/',
   title: 'Terms of Service | Air2Transport',
   description:
     "Read the terms and conditions that apply when you book or use Air2Transport's chauffeur and transfer services.",
-  alternates: { canonical: '/terms-of-service/' },
-}
+})
 
 export default function TermsOfServicePage() {
   return (

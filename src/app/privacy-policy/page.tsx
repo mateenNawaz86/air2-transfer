@@ -1,13 +1,13 @@
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
-import type { Metadata } from 'next'
+import { buildPageMetadata } from '@/lib/pageMetadata'
 
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
+  path: '/privacy-policy/',
   title: 'Privacy Policy | Air2Transport',
   description:
     'Read how Air2Transport collects, uses and protects your personal information when you use our chauffeur and transfer services.',
-  alternates: { canonical: '/privacy-policy/' },
-}
+})
 
 export default function PrivacyPolicyPage() {
   return (

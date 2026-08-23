@@ -3,6 +3,7 @@ import { MapPin, Building, Users, Car, CheckCircle } from 'lucide-react'
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { CITIES, getCityBySlug, possessive } from '@/lib/citiesData'
+import { buildPageMetadata } from '@/lib/pageMetadata'
 
 export function generateStaticParams() {
   return CITIES.map((city) => ({ city: city.slug }))
@@ -13,11 +14,11 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
   const city = getCityBySlug(citySlug)
   if (!city) return {}
 
-  return {
+  return buildPageMetadata({
+    path: `/cities/${city.slug}/`,
     title: `Chauffeur & Transfer Services in ${city.name} | Air2Transport`,
     description: `Reliable chauffeur-driven transfers and airport journeys in ${city.name}. Fixed pricing, professional drivers and 24/7 support.`,
-    alternates: { canonical: `/cities/${city.slug}/` },
-  }
+  })
 }
 
 export default async function CityPage({ params }: { params: Promise<{ city: string }> }) {

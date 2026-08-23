@@ -24,16 +24,8 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Air2Transport - Premium Car Transfer Services',
     description: 'Professional car transfer services across the UK',
-    url: 'https://jet2transport.com',
+    url: SITE_URL,
     siteName: 'Air2Transport',
-    images: [
-      {
-        url: 'https://assetshost.sirv.com/jet2transport/logoair2.png',
-        width: 300,
-        height: 120,
-        alt: 'Air2Transport - Premium Car Transfer Services',
-      },
-    ],
     locale: 'en_GB',
     type: 'website',
   },
@@ -41,7 +33,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Air2Transport - Premium Car Transfer Services',
     description: 'Professional car transfer services across the UK',
-    images: ['https://assetshost.sirv.com/jet2transport/logoair2.png'],
   },
   robots: 'index, follow',
 }

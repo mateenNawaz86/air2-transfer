@@ -1,11 +1,11 @@
-import type { Metadata } from 'next'
+import { buildPageMetadata } from '@/lib/pageMetadata'
 
-export const metadata: Metadata = {
+export const metadata = buildPageMetadata({
+  path: '/services/concierge/',
   title: 'Concierge Service at Birmingham Airport | Air2Transport',
   description:
     'Premium concierge and meet-and-greet service for travellers at Birmingham Airport.',
-  alternates: { canonical: '/services/concierge/' },
-}
+})
 
 export default function ConciergeLayout({ children }: { children: React.ReactNode }) {
   return children

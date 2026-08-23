@@ -3,6 +3,7 @@ import { MapPin, Clock, Users, CheckCircle, Car, Plane, Shield } from 'lucide-re
 import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { AIRPORTS, getAirportBySlug } from '@/lib/airportsData'
+import { buildPageMetadata } from '@/lib/pageMetadata'
 
 export function generateStaticParams() {
   return AIRPORTS.map((airport) => ({ airport: airport.slug }))
@@ -13,11 +14,11 @@ export async function generateMetadata({ params }: { params: Promise<{ airport: 
   const airport = getAirportBySlug(airportSlug)
   if (!airport) return {}
 
-  return {
+  return buildPageMetadata({
+    path: `/airport-transfers/${airport.slug}/`,
     title: `${airport.name} Airport Transfers | Air2Transport`,
     description: `Reliable transfers to and from ${airport.fullName}, with flight monitoring, meet-and-greet and fixed pricing. Book your ${airport.name} transfer today.`,
-    alternates: { canonical: `/airport-transfers/${airport.slug}/` },
-  }
+  })
 }
 
 export default async function AirportPage({ params }: { params: Promise<{ airport: string }> }) {
