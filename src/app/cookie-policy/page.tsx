@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Cookie Policy | Air2Transport',
   description:
     'Find out how Air2Transport uses cookies on our website and how to manage your cookie preferences.',
+  alternates: { canonical: '/cookie-policy/' },
 }
 
 export default function CookiePolicyPage() {

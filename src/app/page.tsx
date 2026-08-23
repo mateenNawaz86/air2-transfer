@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Airport Transfers & Chauffeur Services UK | Air2Transport',
   description:
     'Book reliable airport transfers, chauffeur services and long-distance travel across the UK. Fixed pricing, flight monitoring and 24/7 support.',
+  alternates: { canonical: '/' },
 }
 
 export default function Home() {

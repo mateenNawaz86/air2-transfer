@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next'
 import { SERVICE_ROUTES } from '@/lib/serviceRoutes'
 import { CITIES } from '@/lib/citiesData'
 import { AIRPORTS } from '@/lib/airportsData'
+import { SITE_URL } from '@/lib/siteConfig'
 
 /**
  * Site audit — "Missing crawler files": /sitemap.xml returned the site's
@@ -21,8 +22,6 @@ import { AIRPORTS } from '@/lib/airportsData'
  * Tools (per the audit) is a manual step outside this codebase — do that
  * once this is live.
  */
-
-const SITE_URL = 'https://air2transport.com'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [

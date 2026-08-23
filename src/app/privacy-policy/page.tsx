@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Privacy Policy | Air2Transport',
   description:
     'Read how Air2Transport collects, uses and protects your personal information when you use our chauffeur and transfer services.',
+  alternates: { canonical: '/privacy-policy/' },
 }
 
 export default function PrivacyPolicyPage() {

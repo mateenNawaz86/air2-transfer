@@ -16,6 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ airport: 
   return {
     title: `${airport.name} Airport Transfers | Air2Transport`,
     description: `Reliable transfers to and from ${airport.fullName}, with flight monitoring, meet-and-greet and fixed pricing. Book your ${airport.name} transfer today.`,
+    alternates: { canonical: `/airport-transfers/${airport.slug}/` },
   }
 }
 

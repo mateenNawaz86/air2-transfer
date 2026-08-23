@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next'
+import { SITE_URL } from '@/lib/siteConfig'
 
 /**
  * Site audit — "Missing crawler files": /robots.txt returned the site's
@@ -9,8 +10,6 @@ import type { MetadataRoute } from 'next'
  * steps, and other account/admin areas that shouldn't be indexed, and
  * point crawlers at the sitemap.
  */
-
-const SITE_URL = 'https://air2transport.com'
 
 export default function robots(): MetadataRoute.Robots {
   return {

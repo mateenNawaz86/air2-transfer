@@ -16,6 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ city: str
   return {
     title: `Chauffeur & Transfer Services in ${city.name} | Air2Transport`,
     description: `Reliable chauffeur-driven transfers and airport journeys in ${city.name}. Fixed pricing, professional drivers and 24/7 support.`,
+    alternates: { canonical: `/cities/${city.slug}/` },
   }
 }
 

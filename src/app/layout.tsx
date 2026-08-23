@@ -6,10 +6,12 @@ import Footer from '@/components/Footer'
 import StickyPhone from '@/components/StickyPhone'
 import StickyWhatsApp from '@/components/StickyWhatsApp'
 import ChunkErrorRecovery from '@/components/ChunkErrorRecovery'
+import { SITE_URL } from '@/lib/siteConfig'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
   title: 'Air2Transport - Premium Car Transfer Services',
   description: 'Professional car transfer services across the UK. Airport transfers, executive chauffeur services, corporate travel, and luxury transport solutions.',
   keywords: 'car transfer, airport transfer, chauffeur service, executive transport, luxury cars, UK transport',
