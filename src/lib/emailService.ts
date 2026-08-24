@@ -18,7 +18,6 @@ export async function sendBookingEmail(emailData: EmailData) {
     
     console.log('Sending email to:', emailData.recipient_email)
     
-    // Use Cloudflare Function for email sending
     const response = await fetch('/api/send-email', {
       method: 'POST',
       headers: {
@@ -28,7 +27,7 @@ export async function sendBookingEmail(emailData: EmailData) {
         to: emailData.recipient_email,
         subject: emailData.subject,
         html: emailData.body.replace(/\n/g, '<br>'),
-        from: 'Air2 Transport <noreply@jet2transport.com>'
+        from: 'Air2Transport <info@air2transport.com>'
       })
     })
 
@@ -138,8 +137,8 @@ export async function sendBookingConfirmationEmail(
   const isPending = bookingDetails.status === 'pending'
   
   const subject = isPending 
-    ? 'Booking Received - Air2 Transport'
-    : 'Booking Confirmed - Air2 Transport'
+    ? 'Booking Received - Air2Transport'
+    : 'Booking Confirmed - Air2Transport'
 
   const statusMessage = isPending
     ? 'Your booking is currently pending confirmation. We will review your request and get back to you shortly.'
@@ -148,7 +147,7 @@ export async function sendBookingConfirmationEmail(
   const body = `
 Dear ${customerName},
 
-${isPending ? 'Thank you for choosing Air2 Transport! We have received your booking request.' : 'Great news! Your booking has been confirmed and a driver has been assigned.'}
+${isPending ? 'Thank you for choosing Air2Transport! We have received your booking request.' : 'Great news! Your booking has been confirmed and a driver has been assigned.'}
 
 Booking Details:
 From: ${bookingDetails.pickupLocation}
@@ -164,7 +163,7 @@ ${statusMessage}
 If you have any questions, please contact us at 01213141080.
 
 Best regards,
-Air2 Transport Team
+Air2Transport Team
   `.trim()
 
   return await sendBookingEmail({
@@ -192,8 +191,8 @@ export async function sendDriverAcceptanceEmail(
   rejectionReason?: string
 ) {
   const subject = accepted 
-    ? 'Driver Accepted Your Booking - Air2 Transport'
-    : 'Driver Update on Your Booking - Air2 Transport'
+    ? 'Driver Accepted Your Booking - Air2Transport'
+    : 'Driver Update on Your Booking - Air2Transport'
 
   const statusMessage = accepted
     ? 'Great news! Your assigned driver has accepted your booking and will contact you directly before your pickup time.'
@@ -222,7 +221,7 @@ ${rejectionReason ? `Rejection Reason: ${rejectionReason}` : ''}
 If you have any questions, please contact us at 01213141080.
 
 Best regards,
-Air2 Transport Team
+Air2Transport Team
   `.trim()
 
   return await sendBookingEmail({
@@ -247,12 +246,12 @@ export async function sendBookingCompletionEmail(
     price: number
   }
 ) {
-  const subject = 'Ride Completed - Air2 Transport'
+  const subject = 'Ride Completed - Air2Transport'
 
   const body = `
 Dear ${customerName},
 
-Your ride has been completed successfully! We hope you had a pleasant journey with Air2 Transport.
+Your ride has been completed successfully! We hope you had a pleasant journey with Air2Transport.
 
 Trip Details:
 From: ${bookingDetails.pickupLocation}
@@ -262,12 +261,12 @@ Time: ${new Date(bookingDetails.pickupTime).toLocaleTimeString('en-GB', { hour: 
 Service: ${bookingDetails.serviceType}
 Total: £${bookingDetails.price.toFixed(2)}
 
-Thank you for choosing Air2 Transport! We look forward to serving you again.
+Thank you for choosing Air2Transport! We look forward to serving you again.
 
 If you have any feedback about your journey, please contact us at 01213141080.
 
 Best regards,
-Air2 Transport Team
+Air2Transport Team
   `.trim()
 
   return await sendBookingEmail({
@@ -289,12 +288,12 @@ export async function sendDriverApplicationSubmissionEmail(
     submissionDate: string
   }
 ) {
-  const subject = 'Driver Application Received - Air2 Transport'
+  const subject = 'Driver Application Received - Air2Transport'
 
   const body = `
 Dear ${driverName},
 
-Thank you for your interest in joining Air2 Transport as a driver! We have received your application and it is currently under review.
+Thank you for your interest in joining Air2Transport as a driver! We have received your application and it is currently under review.
 
 Application Details:
 Application ID: ${applicationDetails.applicationId}
@@ -309,10 +308,10 @@ What happens next:
 
 We typically review applications within 3-5 business days. If you have any questions or need to update your application, please contact us at 01213141080.
 
-Thank you for choosing Air2 Transport!
+Thank you for choosing Air2Transport!
 
 Best regards,
-Air2 Transport Team
+Air2Transport Team
   `.trim()
 
   return await sendBookingEmail({
@@ -334,12 +333,12 @@ export async function sendDriverApplicationApprovalEmail(
     approvalDate: string
   }
 ) {
-  const subject = 'Driver Application Approved - Welcome to Air2 Transport!'
+  const subject = 'Driver Application Approved - Welcome to Air2Transport!'
 
   const body = `
 Dear ${driverName},
 
-Congratulations! Your driver application has been approved and you are now officially part of the Air2 Transport team!
+Congratulations! Your driver application has been approved and you are now officially part of the Air2Transport team!
 
 Application Details:
 Application ID: ${applicationDetails.applicationId}
@@ -363,7 +362,7 @@ Welcome aboard! We're excited to have you as part of our team.
 If you have any questions, please contact us at 01213141080.
 
 Best regards,
-Air2 Transport Team
+Air2Transport Team
   `.trim()
 
   return await sendBookingEmail({
@@ -390,7 +389,7 @@ export async function sendDriverAssignmentNotification(
     customerPhone?: string
   }
 ) {
-  const subject = 'New Booking Assignment - Air2 Transport'
+  const subject = 'New Booking Assignment - Air2Transport'
 
   const body = `
 Dear ${driverName},
@@ -418,7 +417,7 @@ Next Steps:
 Please respond to this assignment as soon as possible.
 
 Best regards,
-Air2 Transport Team
+Air2Transport Team
   `.trim()
 
   return await sendBookingEmail({
@@ -457,7 +456,7 @@ export async function sendAdminBookingNotification(
     ? process.env.NEXT_PUBLIC_ADMIN_EMAIL 
     : process.env.ADMIN_EMAIL) || 'info@air2transport.com'
   
-  const subject = 'New Booking Received - Air2 Transport'
+  const subject = 'New Booking Received - Air2Transport'
 
   const formattedDate = new Date(bookingDetails.pickupTime).toLocaleDateString('en-GB', {
     weekday: 'long',
@@ -517,7 +516,7 @@ Next Steps:
 2. Assign a driver if needed
 3. Monitor the booking status
 
-This is an automated notification from the Air2 Transport booking system.
+This is an automated notification from the Air2Transport booking system.
   `.trim()
 
   return await sendBookingEmail({

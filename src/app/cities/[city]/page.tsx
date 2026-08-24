@@ -4,6 +4,8 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { CITIES, getCityBySlug, possessive } from '@/lib/citiesData'
 import { buildPageMetadata } from '@/lib/pageMetadata'
+import { buildBreadcrumbSchema } from '@/lib/structuredData'
+import JsonLd from '@/components/JsonLd'
 
 export function generateStaticParams() {
   return CITIES.map((city) => ({ city: city.slug }))
@@ -26,8 +28,15 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
   const city = getCityBySlug(citySlug)
   if (!city) notFound()
 
+  const breadcrumb = buildBreadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Cities', path: '/cities/' },
+    { name: city.name, path: `/cities/${city.slug}/` },
+  ])
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <JsonLd data={breadcrumb} />
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-jet2-dark to-jet2-orange text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">

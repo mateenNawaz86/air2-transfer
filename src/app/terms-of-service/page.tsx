@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import { buildPageMetadata } from '@/lib/pageMetadata'
+import { buildBreadcrumbSchema } from '@/lib/structuredData'
+import JsonLd from '@/components/JsonLd'
 
 export const metadata = buildPageMetadata({
   path: '/terms-of-service/',
@@ -9,9 +11,15 @@ export const metadata = buildPageMetadata({
     "Read the terms and conditions that apply when you book or use Air2Transport's chauffeur and transfer services.",
 })
 
+const breadcrumb = buildBreadcrumbSchema([
+  { name: 'Home', path: '/' },
+  { name: 'Terms of Service', path: '/terms-of-service/' },
+])
+
 export default function TermsOfServicePage() {
   return (
     <div className="min-h-screen bg-gray-50">
+      <JsonLd data={breadcrumb} />
       {/* Header */}
       <div className="bg-white shadow-sm border-b">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">

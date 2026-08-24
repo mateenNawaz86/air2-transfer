@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import { buildPageMetadata } from '@/lib/pageMetadata'
+import { buildBreadcrumbSchema } from '@/lib/structuredData'
+import JsonLd from '@/components/JsonLd'
 
 export const metadata = buildPageMetadata({
   path: '/privacy-policy/',
@@ -9,9 +11,15 @@ export const metadata = buildPageMetadata({
     'Read how Air2Transport collects, uses and protects your personal information when you use our chauffeur and transfer services.',
 })
 
+const breadcrumb = buildBreadcrumbSchema([
+  { name: 'Home', path: '/' },
+  { name: 'Privacy Policy', path: '/privacy-policy/' },
+])
+
 export default function PrivacyPolicyPage() {
   return (
     <div className="min-h-screen bg-gray-50">
+      <JsonLd data={breadcrumb} />
       {/* Header */}
       <div className="bg-white shadow-sm border-b">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">

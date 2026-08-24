@@ -142,7 +142,7 @@ export default function TermsAndConditionsPage() {
                 <div className="bg-jet2-light p-6 rounded-lg">
                   <p className="text-jet2-gray mb-2">Email: info@air2transport.com</p>
                   <p className="text-jet2-gray mb-2">Phone: 01213141080</p>
-                  <p className="text-jet2-gray">Address: London, UK</p>
+                  <p className="text-jet2-gray">Address: Birmingham, UK</p>
                 </div>
               </div>
             </div>

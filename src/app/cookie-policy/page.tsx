@@ -1,6 +1,8 @@
 import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 import { buildPageMetadata } from '@/lib/pageMetadata'
+import { buildBreadcrumbSchema } from '@/lib/structuredData'
+import JsonLd from '@/components/JsonLd'
 
 export const metadata = buildPageMetadata({
   path: '/cookie-policy/',
@@ -9,9 +11,15 @@ export const metadata = buildPageMetadata({
     'Find out how Air2Transport uses cookies on our website and how to manage your cookie preferences.',
 })
 
+const breadcrumb = buildBreadcrumbSchema([
+  { name: 'Home', path: '/' },
+  { name: 'Cookie Policy', path: '/cookie-policy/' },
+])
+
 export default function CookiePolicyPage() {
   return (
     <div className="min-h-screen bg-gray-50">
+      <JsonLd data={breadcrumb} />
       {/* Header */}
       <div className="bg-white shadow-sm border-b">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">

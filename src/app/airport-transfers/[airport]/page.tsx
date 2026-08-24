@@ -4,6 +4,8 @@ import type { Metadata } from 'next'
 import { notFound } from 'next/navigation'
 import { AIRPORTS, getAirportBySlug } from '@/lib/airportsData'
 import { buildPageMetadata } from '@/lib/pageMetadata'
+import { buildBreadcrumbSchema } from '@/lib/structuredData'
+import JsonLd from '@/components/JsonLd'
 
 export function generateStaticParams() {
   return AIRPORTS.map((airport) => ({ airport: airport.slug }))
@@ -26,8 +28,15 @@ export default async function AirportPage({ params }: { params: Promise<{ airpor
   const airport = getAirportBySlug(airportSlug)
   if (!airport) notFound()
 
+  const breadcrumb = buildBreadcrumbSchema([
+    { name: 'Home', path: '/' },
+    { name: 'Airport Transfers', path: '/airport-transfers/' },
+    { name: airport.name, path: `/airport-transfers/${airport.slug}/` },
+  ])
+
   return (
     <div className="min-h-screen bg-gray-50">
+      <JsonLd data={breadcrumb} />
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-jet2-dark to-jet2-orange text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">

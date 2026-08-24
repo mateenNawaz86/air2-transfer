@@ -17,7 +17,7 @@ export async function onRequestPost(context) {
         'Authorization': `Bearer ${env.RESEND_API_KEY}`
       },
       body: JSON.stringify({
-        from: from || 'Air2 Transport <noreply@jet2transport.com>',
+        from: from || 'Air2Transport <info@air2transport.com>',
         to: to,
         subject,
         html

@@ -731,7 +731,7 @@ export default function Home() {
               quoteAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
             }`}>
               <p className="text-jet2-gray mb-4">
-                Get 10% Discount for advance booking - Use code: <span className="font-bold text-jet2-orange animate-pulse">JET10</span>
+                Get 10% Discount for advance booking - Use code: <span className="font-bold text-jet2-orange animate-pulse">A2T10</span>
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <div className="flex items-center text-jet2-gray">
@@ -760,7 +760,7 @@ export default function Home() {
           <p className={`text-xl text-white opacity-90 mb-8 max-w-2xl mx-auto transition-all duration-1000 delay-300 ${
             ctaAnimation.isVisible ? 'opacity-90' : 'opacity-0 translate-y-8'
           }`}>
-            Book your ride with Air2 Transport and enjoy the flexibility of standard transfers or executive chauffeur services — always reliable, always comfortable
+            Book your ride with Air2Transport and enjoy the flexibility of standard transfers or executive chauffeur services — always reliable, always comfortable
           </p>
           <div className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-1000 delay-600 ${
             ctaAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'

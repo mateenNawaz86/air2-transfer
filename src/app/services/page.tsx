@@ -3,10 +3,18 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { Phone, Mail, MapPin, Clock, Star, CheckCircle, Car, Users, Calendar, Building } from 'lucide-react'
+import JsonLd from '@/components/JsonLd'
+import { buildBreadcrumbSchema } from '@/lib/structuredData'
+
+const breadcrumb = buildBreadcrumbSchema([
+  { name: 'Home', path: '/' },
+  { name: 'Services', path: '/services/' },
+])
 
 export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-gray-50">
+      <JsonLd data={breadcrumb} />
       {/* Hero Section */}
       <div className="bg-gradient-to-r from-jet2-dark to-jet2-orange text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">

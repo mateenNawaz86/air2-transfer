@@ -6,7 +6,9 @@ import Footer from '@/components/Footer'
 import StickyPhone from '@/components/StickyPhone'
 import StickyWhatsApp from '@/components/StickyWhatsApp'
 import ChunkErrorRecovery from '@/components/ChunkErrorRecovery'
+import JsonLd from '@/components/JsonLd'
 import { SITE_URL } from '@/lib/siteConfig'
+import { buildOrganizationSchema } from '@/lib/structuredData'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -50,6 +52,7 @@ export default function RootLayout({
         <link rel="apple-touch-icon" href="https://assetshost.sirv.com/jet2transport/logoair2.png" />
       </head>
       <body className={`${inter.className} antialiased`}>
+        <JsonLd data={buildOrganizationSchema()} />
         <div className="flex flex-col min-h-screen">
           <Header />
           <main className="flex-grow">
