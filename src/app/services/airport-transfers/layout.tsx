@@ -2,9 +2,15 @@ import { buildPageMetadata } from '@/lib/pageMetadata'
 import { buildBreadcrumbSchema, buildServiceSchema } from '@/lib/structuredData'
 import JsonLd from '@/components/JsonLd'
 
-const TITLE = 'UK Airport Transfers with Flight Monitoring'
+// Deliberately distinct from /airport-transfers/'s title & description: that
+// page is the browse-by-airport directory (like /cities is for cities), this
+// page describes the airport transfer service itself, alongside its four
+// sibling /services/* pages. Two live URLs previously carried the exact same
+// <title> and meta description — a literal duplicate-content signal to
+// search engines despite each page being genuinely useful on its own.
+const TITLE = 'Professional Airport Transfer Service'
 const DESCRIPTION =
-  'Pre-book reliable UK airport transfers with real-time flight monitoring, meet-and-greet options and fixed pricing before you travel.'
+  'Fixed-price, chauffeur-driven airport transfers across the UK with flight monitoring, meet-and-greet and a premium fleet — part of our full range of chauffeur services.'
 const PATH = '/services/airport-transfers/'
 
 export const metadata = buildPageMetadata({

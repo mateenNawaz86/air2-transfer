@@ -16,14 +16,18 @@ import { test, expect, type Locator } from '@playwright/test'
 // exact text keep each locator pinned to a single element.
 const SECTION_HEADINGS: Array<{ name: string; level: 1 | 2; exact?: boolean }> = [
   { name: 'Your Trusted Partner', level: 1, exact: false },
-  { name: 'Our Services', level: 2 },
   { name: 'Why Choose Air2Transport?', level: 2 },
+  { name: 'Our Services', level: 2 },
+  // Renamed from 'Airport Transfers' / duplicate 'Why Choose Air2Transport'
+  // when the two identically-titled "why choose" sections were deduped and
+  // the homepage section order was revised (see git history on this file).
+  { name: 'Airport Transfers Across the UK', level: 2 },
+  { name: 'Included with Every Airport Transfer', level: 2 },
   { name: 'Our Fleet', level: 2 },
+  { name: 'How Booking Works', level: 2 },
   { name: 'What Our Customers Say About Us!', level: 2 },
-  { name: 'Intercity Travel', level: 2 },
-  { name: 'Airport Transfers', level: 2 },
-  { name: 'Why Choose Air2Transport', level: 2 },
   { name: 'Get an Instant Quote', level: 2 },
+  { name: 'Intercity Travel', level: 2 },
   { name: 'Ready to Book Your Ride?', level: 2 },
 ]
 

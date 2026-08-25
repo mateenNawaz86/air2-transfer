@@ -248,31 +248,94 @@ export default function ChauffeurServicesPage() {
               We provide chauffeur services across major UK cities and airports
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div>
               <h3 className="text-2xl font-semibold text-jet2-dark mb-4">Major Cities</h3>
               <div className="grid grid-cols-2 gap-3">
-                {['London', 'Birmingham', 'Manchester', 'Leeds', 'Bristol', 'Sheffield', 'Nottingham', 'Leicester'].map((city, index) => (
-                  <div key={index} className="flex items-center text-jet2-gray">
-                    <MapPin className="h-4 w-4 text-jet2-orange mr-2" />
-                    <span>{city}</span>
-                  </div>
+                {[
+                  { name: 'London', slug: 'london' },
+                  { name: 'Birmingham', slug: 'birmingham' },
+                  { name: 'Manchester', slug: 'manchester' },
+                  { name: 'Leeds', slug: 'leeds' },
+                  { name: 'Bristol', slug: null },
+                  { name: 'Sheffield', slug: 'sheffield' },
+                  { name: 'Nottingham', slug: 'nottingham' },
+                  { name: 'Leicester', slug: null },
+                ].map((city, index) => (
+                  <Link
+                    key={index}
+                    href={city.slug ? `/cities/${city.slug}/` : '/cities'}
+                    className="flex items-center text-jet2-gray hover:text-jet2-orange transition-colors"
+                  >
+                    <MapPin className="h-4 w-4 text-jet2-orange mr-2 flex-shrink-0" />
+                    <span>{city.name}</span>
+                  </Link>
                 ))}
               </div>
             </div>
-            
+
             <div>
               <h3 className="text-2xl font-semibold text-jet2-dark mb-4">Airports</h3>
               <div className="grid grid-cols-2 gap-3">
-                {['Heathrow', 'Gatwick', 'Manchester', 'Birmingham', 'Stansted', 'Luton', 'East Midlands', 'London City'].map((airport, index) => (
-                  <div key={index} className="flex items-center text-jet2-gray">
-                    <Plane className="h-4 w-4 text-jet2-orange mr-2" />
-                    <span>{airport}</span>
-                  </div>
+                {[
+                  { name: 'Heathrow', slug: 'heathrow' },
+                  { name: 'Gatwick', slug: 'gatwick' },
+                  { name: 'Manchester', slug: 'manchester' },
+                  { name: 'Birmingham', slug: 'birmingham' },
+                  { name: 'Stansted', slug: 'stansted' },
+                  { name: 'Luton', slug: 'luton' },
+                  { name: 'East Midlands', slug: 'east-midlands' },
+                  { name: 'London City', slug: 'london-city' },
+                ].map((airport, index) => (
+                  <Link
+                    key={index}
+                    href={`/airport-transfers/${airport.slug}/`}
+                    className="flex items-center text-jet2-gray hover:text-jet2-orange transition-colors"
+                  >
+                    <Plane className="h-4 w-4 text-jet2-orange mr-2 flex-shrink-0" />
+                    <span>{airport.name}</span>
+                  </Link>
                 ))}
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Chauffeur Tour Pages by City */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-bold text-jet2-dark mb-4">Chauffeur Tours & Hourly Hire by City</h2>
+            <p className="text-xl text-jet2-gray max-w-3xl mx-auto">
+              Book a dedicated chauffeur for the day in one of these cities
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { name: 'Birmingham', slug: 'birmingham-tour' },
+              { name: 'Cheltenham', slug: 'cheltenham' },
+              { name: 'Coventry', slug: 'coventry' },
+              { name: 'Derby', slug: 'derby' },
+              { name: 'Leeds', slug: 'leeds' },
+              { name: 'Leicester', slug: 'leicester' },
+              { name: 'London', slug: 'london' },
+              { name: 'Nottingham', slug: 'nottingham' },
+              { name: 'Oxford', slug: 'oxford' },
+              { name: 'Peterborough', slug: 'peterborough' },
+              { name: 'Sheffield', slug: 'sheffield' },
+            ].map((city) => (
+              <Link
+                key={city.slug}
+                href={`/chauffeur-services/${city.slug}/`}
+                className="border border-gray-200 rounded-lg p-4 text-center hover:shadow-lg hover:border-jet2-orange transition-all"
+              >
+                <MapPin className="h-5 w-5 text-jet2-orange mx-auto mb-2" />
+                <span className="font-medium text-jet2-dark">{city.name}</span>
+              </Link>
+            ))}
           </div>
         </div>
       </section>
@@ -288,7 +351,7 @@ export default function ChauffeurServicesPage() {
             <Link href="/bookings/new/" className="bg-white text-jet2-orange hover:bg-gray-100 font-semibold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
               Book Now
             </Link>
-            <Link href="/contact-us" className="border-2 border-white text-white hover:bg-white hover:text-jet2-orange font-semibold py-4 px-8 rounded-lg transition-all duration-300">
+            <Link href="/contact" className="border-2 border-white text-white hover:bg-white hover:text-jet2-orange font-semibold py-4 px-8 rounded-lg transition-all duration-300">
               Contact Us
             </Link>
           </div>

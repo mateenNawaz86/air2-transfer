@@ -101,6 +101,11 @@ const nextConfig = {
       { source: '/services/special-events/', destination: '/services/events-chauffeur-service', permanent: true },
       { source: '/services/wedding-chauffeurs/', destination: '/services/events-chauffeur-service', permanent: true },
       { source: '/services/executive-chauffeur/', destination: '/services/chauffeur-services', permanent: true },
+      // /contact-us duplicated /contact (same purpose, no metadata of its own,
+      // inheriting the generic root title/description) while still being the
+      // target of ~25 internal "Contact Us" CTAs. Consolidated onto /contact,
+      // which already has proper metadata, canonical and structured data.
+      { source: '/contact-us/', destination: '/contact', permanent: true },
     ]
   },
 }

@@ -216,6 +216,86 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
         </div>
       </div>
 
+      {/* Service Coverage & Travel Tips */}
+      <div className="py-16 bg-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Where We Cover in {city.name}
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="bg-white p-8 rounded-lg shadow-lg">
+              <h3 className="text-xl font-semibold mb-4 text-jet2-dark">Service Coverage</h3>
+              <p className="text-gray-600">
+                We cover the whole of {city.name} and the surrounding area, including {city.areas[0].name},{' '}
+                {city.areas[1].name} and {city.areas[2].name} — from {city.areas[0].landmarks} to{' '}
+                {city.areas[2].landmarks}.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-lg shadow-lg">
+              <h3 className="text-xl font-semibold mb-4 text-jet2-dark">Local Travel Considerations</h3>
+              <p className="text-gray-600">
+                As with any major UK city, traffic in {city.name} can be heavier during weekday rush hours
+                (typically 7–9am and 4–6:30pm) and around major events. We recommend booking a little extra time
+                for these periods to guarantee an on-time arrival.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* FAQs */}
+      <div className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              {city.name} Chauffeur Service FAQs
+            </h2>
+          </div>
+
+          <div className="max-w-3xl mx-auto space-y-6">
+            <div className="border border-gray-200 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-jet2-dark mb-2">
+                Where in {city.name} do you provide chauffeur services?
+              </h3>
+              <p className="text-gray-600">
+                We cover the whole of {city.name} and the surrounding area, including {city.areas[0].name},{' '}
+                {city.areas[1].name} and {city.areas[2].name}.
+              </p>
+            </div>
+            <div className="border border-gray-200 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-jet2-dark mb-2">
+                Can I book an airport transfer from {city.name}?
+              </h3>
+              <p className="text-gray-600">
+                Yes. We combine {city.name} chauffeur services with fixed-price airport transfers, including flight
+                monitoring and meet-and-greet.
+              </p>
+            </div>
+            <div className="border border-gray-200 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-jet2-dark mb-2">
+                Do you offer discounts for regular {city.name} bookings?
+              </h3>
+              <p className="text-gray-600">
+                Yes, we offer discounted rates for corporate accounts and regular bookings — get in touch to discuss
+                a tailored plan for your business.
+              </p>
+            </div>
+            <div className="border border-gray-200 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-jet2-dark mb-2">
+                Is pricing fixed for journeys in {city.name}?
+              </h3>
+              <p className="text-gray-600">
+                Yes, every {city.name} journey is quoted with a fixed, all-inclusive price before you travel.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* CTA Section */}
       <div className="py-16 bg-jet2-dark text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

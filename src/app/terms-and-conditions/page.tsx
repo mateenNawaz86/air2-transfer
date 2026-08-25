@@ -157,7 +157,7 @@ export default function TermsAndConditionsPage() {
           <p className="text-xl text-jet2-gray mb-8 max-w-2xl mx-auto">
             We're here to help clarify any terms or conditions
           </p>
-          <Link href="/contact-us" className="btn-primary inline-flex items-center">
+          <Link href="/contact" className="btn-primary inline-flex items-center">
             Contact Us <FileText className="ml-2 h-4 w-4" />
           </Link>
         </div>

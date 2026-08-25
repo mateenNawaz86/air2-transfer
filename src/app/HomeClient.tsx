@@ -2,13 +2,13 @@
 
 import Image from 'next/image'
 import Link from 'next/link'
-import { 
-  Car, 
-  Shield, 
-  Clock, 
-  Users, 
-  Star, 
-  Phone, 
+import {
+  Car,
+  Shield,
+  Clock,
+  Users,
+  Star,
+  Phone,
   ArrowRight,
   Zap,
   Heart,
@@ -29,6 +29,7 @@ export default function Home() {
   const servicesAnimation = useScrollAnimation()
   const whyChooseAnimation = useScrollAnimation()
   const fleetAnimation = useScrollAnimation()
+  const howItWorksAnimation = useScrollAnimation()
   const testimonialsAnimation = useScrollAnimation()
   const citiesAnimation = useScrollAnimation()
   const featuresAnimation = useScrollAnimation()
@@ -180,48 +181,58 @@ export default function Home() {
     }
   ]
 
+  // Every airport below has a dedicated, indexable page at /airport-transfers/[slug]
   const airports = [
-    'Heathrow Airport',
-    'Gatwick Airport',
-    'Manchester Airport',
-    'Birmingham Airport',
-    'Stansted Airport',
-    'Luton Airport',
-    'East Midlands Airport',
-    'London City Airport'
+    { name: 'Heathrow Airport', slug: 'heathrow' },
+    { name: 'Gatwick Airport', slug: 'gatwick' },
+    { name: 'Manchester Airport', slug: 'manchester' },
+    { name: 'Birmingham Airport', slug: 'birmingham' },
+    { name: 'Stansted Airport', slug: 'stansted' },
+    { name: 'Luton Airport', slug: 'luton' },
+    { name: 'East Midlands Airport', slug: 'east-midlands' },
+    { name: 'London City Airport', slug: 'london-city' }
   ]
 
+  // slug is null where there is no dedicated city page yet - those cards link to the cities hub instead of a 404
   const cities = [
     {
       name: 'London',
+      slug: 'london',
       image: 'https://assetshost.sirv.com/jet2transport/city-london.jpg'
     },
     {
       name: 'Birmingham',
+      slug: 'birmingham',
       image: 'https://assetshost.sirv.com/jet2transport/city-birmingham.jpg'
     },
     {
       name: 'Manchester',
+      slug: 'manchester',
       image: 'https://assetshost.sirv.com/jet2transport/city-manchester.jpg'
     },
     {
       name: 'Leeds',
+      slug: 'leeds',
       image: 'https://assetshost.sirv.com/jet2transport/city-leeds.jpg'
     },
     {
       name: 'Bristol',
+      slug: null,
       image: 'https://assetshost.sirv.com/jet2transport/city-bristol.jpg'
     },
     {
       name: 'Sheffield',
+      slug: 'sheffield',
       image: 'https://assetshost.sirv.com/jet2transport/city-sheffield.jpg'
     },
     {
       name: 'Nottingham',
+      slug: 'nottingham',
       image: 'https://assetshost.sirv.com/jet2transport/city-nottingham.jpg'
     },
     {
       name: 'Leicester',
+      slug: null,
       image: 'https://assetshost.sirv.com/jet2transport/city-leicester.jpg'
     }
   ]
@@ -259,10 +270,33 @@ export default function Home() {
     }
   ]
 
+  const howItWorks = [
+    {
+      icon: Calendar,
+      title: 'Get an Instant Quote',
+      description: 'Enter your pickup, drop-off, date and time to see a fixed price in seconds.'
+    },
+    {
+      icon: CreditCard,
+      title: 'Confirm Your Booking',
+      description: 'Complete your booking and receive an instant email confirmation with your trip details.'
+    },
+    {
+      icon: Users,
+      title: 'Meet Your Driver',
+      description: 'Your licensed, professional driver arrives on time and meets you as arranged.'
+    },
+    {
+      icon: Car,
+      title: 'Arrive Relaxed',
+      description: 'Sit back and enjoy a comfortable journey at the fixed price you were quoted.'
+    }
+  ]
+
   return (
     <div className="min-h-screen">
-      {/* Hero Section with Two Columns */}
-      <section className="relative isolate h-screen flex overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative isolate flex items-center overflow-hidden py-24 sm:py-28 lg:h-screen lg:py-0">
         {/* Background Image covering entire section */}
         <div className="absolute inset-0 z-0">
           <Image
@@ -272,42 +306,73 @@ export default function Home() {
             className="object-cover animate-scale-in"
             priority
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/40 via-black/20 to-transparent"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-transparent lg:from-black/40 lg:via-black/20"></div>
         </div>
-        
-        {/* Left Column - Text Content */}
-        <div className="w-1/2 flex items-center justify-start relative z-10">
-          <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="text-left text-white max-w-lg">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 animate-slide-in-left">
-                Your Trusted Partner
-                <span className="block gradient-text animate-slide-in-left animate-delay-200">for Transfer Services</span>
-              </h1>
-              <p className="text-lg md:text-xl lg:text-2xl mb-8 opacity-90 animate-slide-in-left animate-delay-400">
-                Birmingham • London • Manchester
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 animate-slide-in-left animate-delay-600">
-                <Link href="/bookings/new/" className="btn-primary text-lg px-8 py-4 w-fit animate-pulse hover:animate-none">
-                  BOOK NOW
-                </Link>
-                <Link href="/contact" className="btn-secondary text-lg px-8 py-4 w-fit hover:animate-glow">
-                  Get A Quote
-                </Link>
-              </div>
+
+        {/* Content - shares the same site container/margins as every section below */}
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-left text-white max-w-lg">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 animate-slide-in-left">
+              Your Trusted Partner
+              <span className="block gradient-text animate-slide-in-left animate-delay-200">for Transfer Services</span>
+            </h1>
+            <p className="text-lg md:text-xl lg:text-2xl mb-8 opacity-90 animate-slide-in-left animate-delay-400">
+              Birmingham • London • Manchester
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 animate-slide-in-left animate-delay-600">
+              <Link href="/bookings/new/" className="btn-primary text-lg px-8 py-4 w-fit animate-pulse hover:animate-none">
+                BOOK NOW
+              </Link>
+              <Link href="/contact" className="btn-secondary text-lg px-8 py-4 w-fit hover:animate-glow">
+                Get A Quote
+              </Link>
             </div>
           </div>
         </div>
-        
-        {/* Right Column - Floating Elements */}
-        <div className="w-1/2 relative z-10">
-          {/* This column is transparent to show the background image */}
+      </section>
+
+      {/* Why Choose Us Section - general trust signals, shown right after the hero */}
+      <section className="relative z-10 py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            ref={whyChooseAnimation.elementRef}
+            className={`text-center mb-16 ${
+              whyChooseAnimation.isVisible ? 'animate-on-scroll animate-visible' : 'animate-on-scroll'
+            }`}
+          >
+            <h2 className="text-4xl font-bold text-jet2-dark mb-4 animate-slide-down">Why Choose Air2Transport?</h2>
+            <p className="text-xl text-jet2-gray max-w-3xl mx-auto animate-fade-in animate-delay-200">
+              Choosing Air2Transport guarantees an exceptional travel experience from start to finish
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {whyChooseUs.map((item, index) => {
+              const Icon = item.icon
+              return (
+                <div
+                  key={index}
+                  ref={setFeatureRef(index)}
+                  className={`text-center group transition-all duration-500 ${
+                    visibleFeatures[index] ? 'animate-bounce-in' : 'opacity-0 scale-75'
+                  }`}
+                >
+                  <div className="w-16 h-16 bg-jet2-orange rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 animate-rotate-in">
+                    <Icon className="h-8 w-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-jet2-dark mb-2">{item.title}</h3>
+                  <p className="text-jet2-gray">{item.description}</p>
+                </div>
+              )
+            })}
+          </div>
         </div>
       </section>
 
       {/* Top-Rated Service Section */}
-      <section className="relative z-10 py-20 bg-white">
+      <section className="relative z-10 py-20 bg-jet2-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div 
+          <div
             ref={aboutAnimation.elementRef}
             className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center"
           >
@@ -348,9 +413,9 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="relative z-10 py-20 bg-jet2-light">
+      <section className="relative z-10 py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div 
+          <div
             ref={servicesAnimation.elementRef}
             className={`text-center mb-16 ${
               servicesAnimation.isVisible ? 'animate-on-scroll animate-visible' : 'animate-on-scroll'
@@ -358,13 +423,13 @@ export default function Home() {
           >
             <h2 className="text-4xl font-bold text-jet2-dark mb-4 animate-slide-down">Our Services</h2>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => {
               const Icon = service.icon
               return (
-                <div 
-                  key={index} 
+                <div
+                  key={index}
                   ref={setServiceRef(index)}
                   className={`group card-hover bg-white rounded-xl shadow-lg overflow-hidden transition-all duration-500 ${
                     visibleServices[index] ? 'animate-scale-in' : 'opacity-0 scale-75'
@@ -385,7 +450,7 @@ export default function Home() {
                   <div className="p-6">
                     <h3 className="text-xl font-semibold text-jet2-dark mb-2">{service.title}</h3>
                     <p className="text-jet2-gray mb-4">{service.description}</p>
-                    <Link 
+                    <Link
                       href={service.link}
                       className="text-jet2-orange font-medium hover:text-orange-600 transition-colors inline-flex items-center hover:animate-pulse"
                     >
@@ -396,7 +461,7 @@ export default function Home() {
               )
             })}
           </div>
-          
+
           <div className="text-center mt-12">
             <Link href="/services" className="btn-secondary inline-flex items-center animate-float">
               More Services <ArrowRight className="ml-2 h-4 w-4" />
@@ -405,37 +470,71 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-      <section className="relative z-10 py-20 bg-white">
+      {/* Airport Transfers Section - heading plus genuinely linked airport destinations */}
+      <section className="relative z-10 py-20 bg-jet2-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div 
-            ref={whyChooseAnimation.elementRef}
-            className={`text-center mb-16 ${
-              whyChooseAnimation.isVisible ? 'animate-on-scroll animate-visible' : 'animate-on-scroll'
+          <div
+            ref={airportsAnimation.elementRef}
+            className={`text-center mb-16 transition-all duration-1200 ${
+              airportsAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
             }`}
           >
-            <h2 className="text-4xl font-bold text-jet2-dark mb-4 animate-slide-down">Why Choose Air2Transport?</h2>
-            <p className="text-xl text-jet2-gray max-w-3xl mx-auto animate-fade-in animate-delay-200">
-              Choosing Air2Transport guarantees an exceptional travel experience from start to finish
+            <h2 className="text-4xl font-bold text-jet2-dark mb-4">Airport Transfers Across the UK</h2>
+            <p className="text-xl text-jet2-gray max-w-3xl mx-auto">
+              Pre-book private transfers to and from major UK airports, with flight monitoring and clear pricing before you travel
             </p>
           </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {whyChooseUs.map((item, index) => {
-              const Icon = item.icon
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {airports.map((airport, index) => (
+              <Link
+                key={index}
+                href={`/airport-transfers/${airport.slug}/`}
+                className={`group block text-center bg-white rounded-xl shadow-md hover:shadow-lg p-6 transition-all duration-300 ${
+                  airportsAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
+                }`}
+                style={{ transitionDelay: `${index * 0.1}s` }}
+              >
+                <div className="w-16 h-16 bg-jet2-orange rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300">
+                  <Plane className="h-8 w-8 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold text-jet2-dark mb-1">{airport.name}</h3>
+                <p className="text-sm text-jet2-gray group-hover:text-jet2-orange transition-colors inline-flex items-center justify-center">
+                  View transfers <ArrowRight className="ml-1 h-3 w-3" />
+                </p>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Airport Transfer Benefits */}
+      <section className="relative z-10 py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            ref={featuresAnimation.elementRef}
+            className={`text-center mb-16 transition-all duration-1200 ${
+              featuresAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            <h2 className="text-4xl font-bold text-jet2-dark mb-4">Included with Every Airport Transfer</h2>
+            <p className="text-xl text-jet2-gray max-w-3xl mx-auto">
+              Every airport transfer comes with these benefits as standard, at no extra cost
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {features.map((feature, index) => {
+              const Icon = feature.icon
               return (
-                <div 
-                  key={index} 
-                  ref={setFeatureRef(index)}
-                  className={`text-center group transition-all duration-500 ${
-                    visibleFeatures[index] ? 'animate-bounce-in' : 'opacity-0 scale-75'
-                  }`}
-                >
-                  <div className="w-16 h-16 bg-jet2-orange rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 animate-rotate-in">
+                <div key={index} className={`text-center group transition-all duration-1000 ${
+                  featuresAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
+                }`} style={{transitionDelay: `${index * 0.2}s`}}>
+                  <div className="w-16 h-16 bg-jet2-orange rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
                     <Icon className="h-8 w-8 text-white" />
                   </div>
-                  <h3 className="text-xl font-semibold text-jet2-dark mb-2">{item.title}</h3>
-                  <p className="text-jet2-gray">{item.description}</p>
+                  <h3 className="text-xl font-semibold text-jet2-dark mb-2">{feature.title}</h3>
+                  <p className="text-jet2-gray">{feature.description}</p>
                 </div>
               )
             })}
@@ -446,7 +545,7 @@ export default function Home() {
       {/* Fleet Section */}
       <section className="relative z-10 py-20 bg-jet2-light">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div 
+          <div
             ref={fleetAnimation.elementRef}
             className={`text-center mb-16 ${
               fleetAnimation.isVisible ? 'animate-on-scroll animate-visible' : 'animate-on-scroll'
@@ -457,11 +556,11 @@ export default function Home() {
               Catering for every occasion
             </p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {fleetVehicles.map((vehicle, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 ref={setFleetRef(index)}
                 className={`fleet-card rounded-xl overflow-hidden card-hover group transition-all duration-500 ${
                   visibleFleet[index] ? 'animate-scale-in' : 'opacity-0 scale-75'
@@ -505,10 +604,64 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Testimonials Section */}
+      {/* How Booking Works */}
       <section className="relative z-10 py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div 
+          <div
+            ref={howItWorksAnimation.elementRef}
+            className={`text-center mb-16 transition-all duration-1200 ${
+              howItWorksAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
+            }`}
+          >
+            <h2 className="text-4xl font-bold text-jet2-dark mb-4">How Booking Works</h2>
+            <p className="text-xl text-jet2-gray max-w-3xl mx-auto">
+              From quote to arrival in four simple steps
+            </p>
+          </div>
+
+          <div className="relative">
+            {/* Connecting thread - desktop only, sits behind the step icons */}
+            <div
+              aria-hidden="true"
+              className="hidden lg:block absolute top-8 left-0 right-0 h-0.5 bg-gradient-to-r from-jet2-orange/0 via-jet2-orange/30 to-jet2-orange/0"
+            />
+
+            <div className="grid grid-cols-2 lg:grid-cols-4 gap-x-4 gap-y-10 lg:gap-8">
+              {howItWorks.map((step, index) => {
+                const Icon = step.icon
+                const isFirst = index === 0
+                return (
+                  <div key={index} className={`relative z-10 text-center group transition-all duration-1000 ${
+                    howItWorksAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
+                  }`} style={{transitionDelay: `${index * 0.2}s`}}>
+                    <div
+                      className={`relative w-16 h-16 bg-jet2-orange rounded-full flex items-center justify-center mx-auto mb-3 group-hover:scale-110 transition-transform duration-300 ${
+                        isFirst ? 'ring-4 ring-jet2-orange/25 ring-offset-4 ring-offset-white' : ''
+                      }`}
+                    >
+                      <Icon className={`text-white ${isFirst ? 'h-9 w-9' : 'h-8 w-8'}`} />
+                    </div>
+                    <span className={`block text-xs font-bold uppercase tracking-wider mb-1 ${
+                      isFirst ? 'text-jet2-orange' : 'text-jet2-gray'
+                    }`}>
+                      Step {index + 1}{isFirst ? ' · Start Here' : ''}
+                    </span>
+                    <h3 className={`text-lg lg:text-xl text-jet2-dark mb-2 ${isFirst ? 'font-bold' : 'font-semibold'}`}>
+                      {step.title}
+                    </h3>
+                    <p className="text-sm lg:text-base text-jet2-gray">{step.description}</p>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Testimonials Section - genuine customer reviews */}
+      <section className="relative z-10 py-20 bg-jet2-light">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
             ref={testimonialsAnimation.elementRef}
             className={`text-center mb-16 ${
               testimonialsAnimation.isVisible ? 'animate-on-scroll animate-visible' : 'animate-on-scroll'
@@ -525,11 +678,11 @@ export default function Home() {
             </div>
             <p className="text-lg text-jet2-gray animate-fade-in animate-delay-400">Based on reviews from our customers</p>
           </div>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {testimonials.map((testimonial, index) => (
-              <div 
-                key={index} 
+              <div
+                key={index}
                 ref={setTestimonialRef(index)}
                 className={`bg-white rounded-xl shadow-lg p-8 card-hover transition-all duration-500 ${
                   visibleTestimonials[index] ? 'animate-scale-in' : 'opacity-0 scale-75'
@@ -561,119 +714,10 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Coverage Areas Section */}
-      <section className="relative z-10 py-20 bg-jet2-light">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div 
-            ref={citiesAnimation.elementRef}
-            className={`text-center mb-16 ${
-              citiesAnimation.isVisible ? 'animate-on-scroll animate-visible' : 'animate-on-scroll'
-            }`}
-          >
-            <h2 className="text-4xl font-bold text-jet2-dark mb-4 animate-slide-down">Intercity Travel</h2>
-            <p className="text-xl text-jet2-gray max-w-3xl mx-auto animate-fade-in animate-delay-200">
-              Professional transfer services between major UK cities
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
-            {cities.map((city, index) => (
-              <div 
-                key={index} 
-                ref={setCityRef(index)}
-                className={`text-center group transition-all duration-500 ${
-                  visibleCities[index] ? 'animate-scale-in' : 'opacity-0 scale-75'
-                }`}
-              >
-                <div className="city-image-container w-40 h-40 mx-auto mb-4 relative animate-float" style={{animationDelay: `${index * 0.2}s`}}>
-                  <Image
-                    src={city.image}
-                    alt={`${city.name} city skyline`}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 768px) 160px, 160px"
-                    priority={index < 4}
-                  />
-                  <div className="city-name-overlay absolute inset-0"></div>
-                  <div className="absolute bottom-3 left-3 right-3 z-10">
-                    <h3 className="text-base font-bold text-white text-center drop-shadow-lg animate-slide-up animate-delay-400">{city.name}</h3>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-          
-          <div className="text-center mb-16">
-            <Link href="/cities" className="btn-secondary inline-flex items-center hover:scale-105 transition-transform duration-300">
-              More Cities <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </div>
-
-          <div 
-            ref={airportsAnimation.elementRef}
-            className={`text-center mb-16 transition-all duration-1200 ${
-              airportsAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
-            }`}
-          >
-            <h2 className="text-4xl font-bold text-jet2-dark mb-4">Airport Transfers</h2>
-            <p className="text-xl text-jet2-gray max-w-3xl mx-auto mb-8">
-              Seamless Transfers To & From All Major UK Airports
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-            {airports.map((airport, index) => (
-              <div key={index} className={`text-center transition-all duration-1000 ${
-                airportsAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
-              }`} style={{transitionDelay: `${index * 0.15}s`}}>
-                <div className="w-16 h-16 bg-jet2-orange rounded-full flex items-center justify-center mx-auto mb-3 hover:scale-110 transition-transform duration-300">
-                  <Plane className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-lg font-semibold text-jet2-dark">{airport}</h3>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Why Choose NET Features */}
+      {/* Instant Quote Section */}
       <section className="relative z-10 py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div 
-            ref={featuresAnimation.elementRef}
-            className={`text-center mb-16 transition-all duration-1200 ${
-              featuresAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
-            }`}
-          >
-            <h2 className="text-4xl font-bold text-jet2-dark mb-4">Why Choose Air2Transport</h2>
-            <p className="text-xl text-jet2-gray max-w-3xl mx-auto">
-              Where reliability meets comfort - your trusted travel partner
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {features.map((feature, index) => {
-              const Icon = feature.icon
-              return (
-                <div key={index} className={`text-center group transition-all duration-1000 ${
-                  featuresAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
-                }`} style={{transitionDelay: `${index * 0.2}s`}}>
-                  <div className="w-16 h-16 bg-jet2-orange rounded-full flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300">
-                    <Icon className="h-8 w-8 text-white" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-jet2-dark mb-2">{feature.title}</h3>
-                  <p className="text-jet2-gray">{feature.description}</p>
-                </div>
-              )
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Instant Quote Section */}
-      <section className="relative z-10 py-20 bg-jet2-light">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div 
+          <div
             ref={quoteAnimation.elementRef}
             className={`text-center mb-12 transition-all duration-1200 ${
               quoteAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
@@ -684,8 +728,8 @@ export default function Home() {
               Have a route in mind? Enter your pickup and drop-off locations to see the price.
             </p>
           </div>
-          
-          <div className={`max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-8 transition-all duration-1200 delay-300 ${
+
+          <div className={`max-w-4xl mx-auto bg-jet2-light rounded-2xl shadow-lg p-8 transition-all duration-1200 delay-300 ${
             quoteAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8 scale-95'
           }`}>
             <form className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -726,7 +770,7 @@ export default function Home() {
                 </button>
               </div>
             </form>
-            
+
             <div className={`mt-8 text-center transition-all duration-1000 delay-1300 ${
               quoteAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
             }`}>
@@ -748,9 +792,67 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Cities / Service Areas Section */}
+      <section className="relative z-10 py-20 bg-jet2-light">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div
+            ref={citiesAnimation.elementRef}
+            className={`text-center mb-16 ${
+              citiesAnimation.isVisible ? 'animate-on-scroll animate-visible' : 'animate-on-scroll'
+            }`}
+          >
+            <h2 className="text-4xl font-bold text-jet2-dark mb-4 animate-slide-down">Intercity Travel</h2>
+            <p className="text-xl text-jet2-gray max-w-3xl mx-auto animate-fade-in animate-delay-200">
+              Professional transfer services between major UK cities
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+            {cities.map((city, index) => (
+              <Link
+                key={index}
+                href={city.slug ? `/cities/${city.slug}/` : '/cities'}
+                className="group block text-center"
+              >
+                <div
+                  ref={setCityRef(index)}
+                  className={`transition-all duration-500 ${
+                    visibleCities[index] ? 'animate-scale-in' : 'opacity-0 scale-75'
+                  }`}
+                >
+                  <div className="city-image-container w-40 h-40 mx-auto mb-3 relative animate-float" style={{animationDelay: `${index * 0.2}s`}}>
+                    <Image
+                      src={city.image}
+                      alt={`${city.name} city skyline`}
+                      fill
+                      className="object-cover"
+                      sizes="(max-width: 768px) 160px, 160px"
+                      priority={index < 4}
+                    />
+                    <div className="city-name-overlay absolute inset-0"></div>
+                    <div className="absolute bottom-3 left-3 right-3 z-10">
+                      <h3 className="text-base font-bold text-white text-center drop-shadow-lg animate-slide-up animate-delay-400">{city.name}</h3>
+                    </div>
+                  </div>
+                  <p className="text-sm text-jet2-gray group-hover:text-jet2-orange transition-colors">
+                    Private transfers in {city.name}
+                  </p>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Link href="/cities" className="btn-secondary inline-flex items-center hover:scale-105 transition-transform duration-300">
+              More Cities <ArrowRight className="ml-2 h-4 w-4" />
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="relative z-10 py-20 gradient-bg">
-        <div 
+        <div
           ref={ctaAnimation.elementRef}
           className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center transition-all duration-1200 ${
             ctaAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'

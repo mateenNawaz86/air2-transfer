@@ -212,6 +212,92 @@ export default async function AirportPage({ params }: { params: Promise<{ airpor
         </div>
       </div>
 
+      {/* Pickup & Travel Information */}
+      <div className="py-16 bg-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Pickup & Travel Information for {airport.name}
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+            <div className="bg-white p-8 rounded-lg shadow-lg">
+              <h3 className="text-xl font-semibold mb-4 text-jet2-dark">Meeting Your Driver</h3>
+              <p className="text-gray-600 mb-3">
+                Your driver will meet you in the arrivals hall holding a name board. {airport.facts[2]}, so please
+                share your terminal and flight number when booking to make sure we&apos;re waiting in the right place.
+              </p>
+              <p className="text-gray-600">
+                We track your flight in real time, so a delay won&apos;t leave you waiting. You also get 60 minutes
+                of complimentary waiting time from your scheduled landing time before any additional charge applies.
+              </p>
+            </div>
+
+            <div className="bg-white p-8 rounded-lg shadow-lg">
+              <h3 className="text-xl font-semibold mb-4 text-jet2-dark">Journey Times & Traffic</h3>
+              <p className="text-gray-600 mb-3">
+                {airport.fullName} is {airport.facts[0]}, with journeys typically taking {airport.facts[1]}.
+              </p>
+              <p className="text-gray-600">
+                Actual travel time can increase during weekday rush hours (typically 7–9am and 4–6:30pm) or around
+                major events, so we recommend booking extra buffer time for early morning or Friday afternoon travel.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* FAQs */}
+      <div className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              {airport.name} Transfer FAQs
+            </h2>
+          </div>
+
+          <div className="max-w-3xl mx-auto space-y-6">
+            <div className="border border-gray-200 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-jet2-dark mb-2">
+                How will my driver find me at {airport.name}?
+              </h3>
+              <p className="text-gray-600">
+                Your driver waits in the arrivals hall with a name board. {airport.facts[2]}, so let us know your
+                terminal and flight number when you book so we meet you at the right one.
+              </p>
+            </div>
+            <div className="border border-gray-200 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-jet2-dark mb-2">
+                What happens if my flight to {airport.name} is delayed?
+              </h3>
+              <p className="text-gray-600">
+                We monitor your flight in real time and adjust your pickup automatically, with 60 minutes of
+                complimentary waiting time included from your scheduled landing time.
+              </p>
+            </div>
+            <div className="border border-gray-200 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-jet2-dark mb-2">
+                How long does a transfer to {airport.name} take?
+              </h3>
+              <p className="text-gray-600">
+                {airport.fullName} is {airport.facts[0]}, with journeys typically taking {airport.facts[1]}, though
+                this can vary with traffic.
+              </p>
+            </div>
+            <div className="border border-gray-200 rounded-lg p-6">
+              <h3 className="text-lg font-semibold text-jet2-dark mb-2">
+                Is the price fixed for my {airport.name} transfer?
+              </h3>
+              <p className="text-gray-600">
+                Yes. We provide a fixed, all-inclusive quote before you travel, with no surge pricing or hidden
+                charges.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
       {/* CTA Section */}
       <div className="py-16 bg-jet2-dark text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">

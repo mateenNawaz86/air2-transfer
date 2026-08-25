@@ -215,6 +215,46 @@ export default function BusinessChauffeurServicesPage() {
         </div>
       </div>
 
+      {/* City Chauffeur Tours */}
+      <div className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Chauffeur Tours & Hourly Hire by City
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Prefer to keep a chauffeur on hand for the day rather than a single point-to-point transfer? Book hourly
+              or full-day hire in these cities.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {[
+              { name: 'Birmingham', slug: 'birmingham-tour' },
+              { name: 'Cheltenham', slug: 'cheltenham' },
+              { name: 'Coventry', slug: 'coventry' },
+              { name: 'Derby', slug: 'derby' },
+              { name: 'Leeds', slug: 'leeds' },
+              { name: 'Leicester', slug: 'leicester' },
+              { name: 'London', slug: 'london' },
+              { name: 'Nottingham', slug: 'nottingham' },
+              { name: 'Oxford', slug: 'oxford' },
+              { name: 'Peterborough', slug: 'peterborough' },
+              { name: 'Sheffield', slug: 'sheffield' },
+            ].map((city) => (
+              <Link
+                key={city.slug}
+                href={`/chauffeur-services/${city.slug}/`}
+                className="border border-gray-200 rounded-lg p-4 text-center hover:shadow-lg hover:border-jet2-orange transition-all"
+              >
+                <MapPin className="h-5 w-5 text-jet2-orange mx-auto mb-2" />
+                <span className="font-medium text-jet2-dark">{city.name}</span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* CTA Section */}
       <div className="py-16 bg-jet2-dark text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
