@@ -76,7 +76,7 @@ export default async function AirportPage({ params }: { params: Promise<{ airpor
               </div>
               <h3 className="text-xl font-semibold mb-3">Flight Monitoring</h3>
               <p className="text-gray-600">
-                Real-time flight tracking to ensure timely pickup and drop-off
+                Real-time tracking for flights into {airport.fullName}, so we know before you land
               </p>
             </div>
 
@@ -86,7 +86,7 @@ export default async function AirportPage({ params }: { params: Promise<{ airpor
               </div>
               <h3 className="text-xl font-semibold mb-3">Meet & Greet</h3>
               <p className="text-gray-600">
-                Professional meet and greet service at arrivals with name board
+                {airport.facts[2]} — your driver will always meet you at the right one with a name board
               </p>
             </div>
 
@@ -96,7 +96,7 @@ export default async function AirportPage({ params }: { params: Promise<{ airpor
               </div>
               <h3 className="text-xl font-semibold mb-3">Luxury Fleet</h3>
               <p className="text-gray-600">
-                Premium vehicles for comfortable airport transfers
+                Premium vehicles for your journey to {airport.name} — {airport.facts[1]}
               </p>
             </div>
           </div>
@@ -149,11 +149,11 @@ export default async function AirportPage({ params }: { params: Promise<{ airpor
               <ul className="space-y-3 text-gray-600">
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-jet2-orange mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Meet and greet service with name board</span>
+                  <span>Meet and greet with a name board — {airport.facts[2]}</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-jet2-orange mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Flight monitoring for delays</span>
+                  <span>Flight monitoring for delays into {airport.fullName}</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-jet2-orange mr-3 mt-0.5 flex-shrink-0" />
@@ -161,7 +161,7 @@ export default async function AirportPage({ params }: { params: Promise<{ airpor
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-jet2-orange mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Direct transfer to your destination</span>
+                  <span>Direct transfer to your destination, including {airport.routes[0].name} ({airport.routes[0].duration})</span>
                 </li>
               </ul>
             </div>
@@ -171,19 +171,19 @@ export default async function AirportPage({ params }: { params: Promise<{ airpor
               <ul className="space-y-3 text-gray-600">
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-jet2-orange mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Pickup from your location</span>
+                  <span>Pickup from your location for {airport.fullName}</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-jet2-orange mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Arrive at airport with time to spare</span>
+                  <span>Arrive with time to spare — typical journeys take {airport.facts[1]}</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-jet2-orange mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Drop-off at your terminal</span>
+                  <span>Drop-off at your terminal — {airport.facts[2]}</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-jet2-orange mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Professional and reliable service</span>
+                  <span>Professional, reliable service with fixed pricing</span>
                 </li>
               </ul>
             </div>

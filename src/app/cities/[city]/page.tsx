@@ -76,7 +76,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
               </div>
               <h3 className="text-xl font-semibold mb-3">Local Knowledge</h3>
               <p className="text-gray-600">
-                Expert drivers with extensive knowledge of {possessive(city.name)} roads and traffic
+                Expert drivers with deep knowledge of {possessive(city.name)} roads and traffic, from {city.areas[0].name} to {city.areas[1].name}
               </p>
             </div>
 
@@ -86,7 +86,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
               </div>
               <h3 className="text-xl font-semibold mb-3">Business Ready</h3>
               <p className="text-gray-600">
-                Professional service perfect for business meetings and corporate travel
+                Professional, discreet service for business meetings and corporate travel across {city.tagline}
               </p>
             </div>
 
@@ -96,7 +96,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
               </div>
               <h3 className="text-xl font-semibold mb-3">Luxury Fleet</h3>
               <p className="text-gray-600">
-                premium vehicles for comfortable travel across {city.name}
+                Premium, comfortable vehicles for every journey across {city.name} — {city.facts[1]}
               </p>
             </div>
           </div>
@@ -153,19 +153,19 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
               <ul className="space-y-3 text-gray-600">
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-jet2-orange mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Meeting and conference transportation</span>
+                  <span>Meeting and conference transportation in {city.areas[0].name} and {city.areas[1].name}</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-jet2-orange mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Client pickup and drop-off</span>
+                  <span>Client pickup and drop-off across {city.name}</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-jet2-orange mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Airport transfers</span>
+                  <span>Airport transfers to and from {city.name}</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-jet2-orange mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Corporate event transportation</span>
+                  <span>Corporate event transportation, including venues near {city.areas[2].landmarks}</span>
                 </li>
               </ul>
             </div>
@@ -175,19 +175,19 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
               <ul className="space-y-3 text-gray-600">
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-jet2-orange mr-3 mt-0.5 flex-shrink-0" />
-                  <span>City tours and sightseeing</span>
+                  <span>City tours and sightseeing around {city.areas[0].landmarks}</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-jet2-orange mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Restaurant and entertainment</span>
+                  <span>Restaurant and entertainment trips in {city.areas[1].name}</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-jet2-orange mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Shopping and retail districts</span>
+                  <span>Shopping trips to {city.areas[2].name}</span>
                 </li>
                 <li className="flex items-start">
                   <CheckCircle className="h-5 w-5 text-jet2-orange mr-3 mt-0.5 flex-shrink-0" />
-                  <span>Hotel and accommodation transfers</span>
+                  <span>Hotel and accommodation transfers across {city.name}</span>
                 </li>
               </ul>
             </div>

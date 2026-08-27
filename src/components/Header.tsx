@@ -214,13 +214,19 @@ export default function Header() {
             <div className="flex items-center space-x-6">
               <div className="flex items-center space-x-2">
                 <Phone className="h-5 w-5 text-jet2-orange" />
-                <a href="tel:01213141080" className="font-bold text-base hover:text-white transition-colors phone-color-animation">
+                <a
+                  href="tel:+441213141080"
+                  aria-label="Call Air2Transport on 0121 314 1080"
+                  className="font-bold text-base hover:text-white transition-colors phone-color-animation"
+                >
                   01213141080
                 </a>
               </div>
               <div className="flex items-center space-x-2">
                 <Mail className="h-4 w-4" />
-                <span>info@air2transport.com</span>
+                <a href="mailto:info@air2transport.com" className="hover:text-jet2-orange transition-colors">
+                  info@air2transport.com
+                </a>
               </div>
             </div>
             <div className="hidden md:flex items-center space-x-2">

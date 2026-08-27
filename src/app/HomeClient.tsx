@@ -1,5 +1,6 @@
 'use client'
 
+import { useState } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import {
@@ -19,9 +20,14 @@ import {
   Calendar,
   CreditCard,
   Headphones,
+  AlertCircle,
+  CheckCircle2,
+  Loader2,
 } from 'lucide-react'
 import { useScrollAnimation, useStaggeredScrollAnimation } from '@/hooks/useScrollAnimation'
 import { SERVICE_ROUTES } from '@/lib/serviceRoutes'
+import LocationInput from '@/components/LocationInput'
+import { getDistance, calculatePrice } from '@/lib/googleMaps'
 
 export default function Home() {
   // Animation hooks
@@ -43,6 +49,50 @@ export default function Home() {
   const { visibleItems: visibleFleet, setRef: setFleetRef } = useStaggeredScrollAnimation(6)
   const { visibleItems: visibleTestimonials, setRef: setTestimonialRef } = useStaggeredScrollAnimation(3)
   const { visibleItems: visibleCities, setRef: setCityRef } = useStaggeredScrollAnimation(8)
+
+  // Instant quote widget - a client-side estimate only (no data is saved anywhere
+  // here); the exact fixed price and full booking happen at /bookings/new/.
+  const [quotePickup, setQuotePickup] = useState('')
+  const [quoteDropoff, setQuoteDropoff] = useState('')
+  const [quoteDateTime, setQuoteDateTime] = useState('')
+  const [quoteErrors, setQuoteErrors] = useState<{ pickup?: string; dropoff?: string; datetime?: string }>({})
+  const [quoteStatus, setQuoteStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle')
+  const [quoteResult, setQuoteResult] = useState<{ distance: number; duration: number; price: number } | null>(null)
+  const [quoteErrorMessage, setQuoteErrorMessage] = useState('')
+
+  const handleQuoteSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+
+    const errors: { pickup?: string; dropoff?: string; datetime?: string } = {}
+    if (!quotePickup.trim()) errors.pickup = 'Enter a pickup location'
+    if (!quoteDropoff.trim()) errors.dropoff = 'Enter a drop-off location'
+    if (!quoteDateTime) {
+      errors.datetime = 'Choose a date and time'
+    } else if (new Date(quoteDateTime).getTime() < Date.now()) {
+      errors.datetime = 'Choose a time in the future'
+    }
+
+    setQuoteErrors(errors)
+    if (Object.keys(errors).length > 0) {
+      return
+    }
+
+    setQuoteStatus('loading')
+    setQuoteErrorMessage('')
+    setQuoteResult(null)
+
+    try {
+      const { distance, duration } = await getDistance(quotePickup, quoteDropoff)
+      const price = calculatePrice('comfort', distance)
+      setQuoteResult({ distance, duration, price })
+      setQuoteStatus('success')
+    } catch (error) {
+      setQuoteErrorMessage(
+        error instanceof Error ? error.message : 'Unable to calculate a price right now. Please try again.'
+      )
+      setQuoteStatus('error')
+    }
+  }
 
   const services = [
     {
@@ -323,8 +373,8 @@ export default function Home() {
               <Link href="/bookings/new/" className="btn-primary text-lg px-8 py-4 w-fit animate-pulse hover:animate-none">
                 BOOK NOW
               </Link>
-              <Link href="/contact" className="btn-secondary text-lg px-8 py-4 w-fit hover:animate-glow">
-                Get A Quote
+              <Link href="/#instant-quote" className="btn-secondary text-lg px-8 py-4 w-fit hover:animate-glow">
+                Get an Instant Quote
               </Link>
             </div>
           </div>
@@ -715,7 +765,7 @@ export default function Home() {
       </section>
 
       {/* Instant Quote Section */}
-      <section className="relative z-10 py-20 bg-white">
+      <section id="instant-quote" className="relative z-10 py-20 bg-white scroll-mt-32">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
             ref={quoteAnimation.elementRef}
@@ -732,44 +782,113 @@ export default function Home() {
           <div className={`max-w-4xl mx-auto bg-jet2-light rounded-2xl shadow-lg p-8 transition-all duration-1200 delay-300 ${
             quoteAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8 scale-95'
           }`}>
-            <form className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <form onSubmit={handleQuoteSubmit} noValidate className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               <div className={`transition-all duration-1000 delay-500 ${
                 quoteAnimation.isVisible ? 'opacity-100' : 'opacity-0 -translate-x-8'
               }`}>
-                <label className="block text-sm font-medium text-jet2-dark mb-2">Pickup Location</label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-jet2-orange focus:border-transparent transition-all duration-300"
+                <LocationInput
+                  id="quote-pickup"
+                  name="pickup-location"
+                  label="Pickup Location"
                   placeholder="Enter pickup address"
+                  value={quotePickup}
+                  onChange={setQuotePickup}
+                  error={quoteErrors.pickup}
+                  required
                 />
               </div>
               <div className={`transition-all duration-1000 delay-700 ${
                 quoteAnimation.isVisible ? 'opacity-100' : 'opacity-0 -translate-x-8'
               }`}>
-                <label className="block text-sm font-medium text-jet2-dark mb-2">Drop-off Location</label>
-                <input
-                  type="text"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-jet2-orange focus:border-transparent transition-all duration-300"
+                <LocationInput
+                  id="quote-dropoff"
+                  name="dropoff-location"
+                  label="Drop-off Location"
                   placeholder="Enter destination"
+                  value={quoteDropoff}
+                  onChange={setQuoteDropoff}
+                  error={quoteErrors.dropoff}
+                  required
                 />
               </div>
               <div className={`transition-all duration-1000 delay-900 ${
                 quoteAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-x-8'
               }`}>
-                <label className="block text-sm font-medium text-jet2-dark mb-2">Date & Time</label>
+                <label htmlFor="quote-datetime" className="block text-sm font-medium text-jet2-dark mb-2">
+                  Date & Time<span className="text-red-500 ml-1">*</span>
+                </label>
                 <input
+                  id="quote-datetime"
+                  name="pickup-datetime"
                   type="datetime-local"
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-jet2-orange focus:border-transparent transition-all duration-300"
+                  autoComplete="off"
+                  required
+                  value={quoteDateTime}
+                  onChange={(e) => setQuoteDateTime(e.target.value)}
+                  aria-invalid={quoteErrors.datetime ? true : undefined}
+                  aria-describedby={quoteErrors.datetime ? 'quote-datetime-error' : undefined}
+                  className={`w-full px-4 py-3 border rounded-lg focus:ring-2 focus:border-transparent transition-all duration-300 ${
+                    quoteErrors.datetime ? 'border-red-400 focus:ring-red-400' : 'border-gray-300 focus:ring-jet2-orange'
+                  }`}
                 />
+                {quoteErrors.datetime && (
+                  <p id="quote-datetime-error" className="mt-1.5 text-sm text-red-600">
+                    {quoteErrors.datetime}
+                  </p>
+                )}
               </div>
               <div className={`flex items-end transition-all duration-1000 delay-1100 ${
                 quoteAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-x-8'
               }`}>
-                <button type="submit" className="btn-primary w-full hover:animate-pulse">
-                  Get Quote
+                <button
+                  type="submit"
+                  disabled={quoteStatus === 'loading'}
+                  className="btn-primary w-full hover:animate-pulse disabled:opacity-60 disabled:cursor-not-allowed disabled:animate-none inline-flex items-center justify-center gap-2"
+                >
+                  {quoteStatus === 'loading' ? (
+                    <>
+                      <Loader2 className="h-5 w-5 animate-spin" />
+                      Calculating...
+                    </>
+                  ) : (
+                    'Get Quote'
+                  )}
                 </button>
               </div>
             </form>
+
+            {quoteStatus === 'error' && (
+              <div role="alert" className="mt-6 flex items-start gap-3 rounded-lg border border-red-200 bg-red-50 p-4 text-left">
+                <AlertCircle className="h-5 w-5 text-red-500 flex-shrink-0 mt-0.5" />
+                <div>
+                  <p className="font-medium text-red-800">We couldn&apos;t calculate a price</p>
+                  <p className="text-sm text-red-700 mt-1">{quoteErrorMessage}</p>
+                </div>
+              </div>
+            )}
+
+            {quoteStatus === 'success' && quoteResult && (
+              <div role="status" className="mt-6 rounded-lg border border-green-200 bg-green-50 p-6 text-left">
+                <div className="flex items-start gap-3">
+                  <CheckCircle2 className="h-5 w-5 text-green-600 flex-shrink-0 mt-0.5" />
+                  <div className="flex-1">
+                    <p className="text-2xl font-bold text-jet2-dark">
+                      Estimated fare: £{quoteResult.price.toFixed(2)}
+                    </p>
+                    <p className="text-sm text-jet2-gray mt-1">
+                      {quoteResult.distance.toFixed(1)} miles, approx. {Math.round(quoteResult.duration)} minutes (Comfort vehicle)
+                    </p>
+                    <p className="text-sm text-jet2-gray mt-2">
+                      This is an estimate based on Comfort pricing. Your exact, fixed price will be confirmed — with
+                      a choice of vehicle — when you complete your booking.
+                    </p>
+                    <Link href="/bookings/new/" className="btn-primary inline-flex items-center gap-2 mt-4">
+                      Continue to Book This Transfer <ArrowRight className="h-4 w-4" />
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            )}
 
             <div className={`mt-8 text-center transition-all duration-1000 delay-1300 ${
               quoteAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
@@ -870,8 +989,8 @@ export default function Home() {
             <Link href="/bookings/new/" className="bg-white text-jet2-orange hover:bg-gray-100 font-semibold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
               Book Your Ride
             </Link>
-            <Link href="/contact" className="border-2 border-white text-white hover:bg-white hover:text-jet2-orange font-semibold py-4 px-8 rounded-lg transition-all duration-300">
-              Get Quote
+            <Link href="/#instant-quote" className="border-2 border-white text-white hover:bg-white hover:text-jet2-orange font-semibold py-4 px-8 rounded-lg transition-all duration-300">
+              Get an Instant Quote
             </Link>
           </div>
         </div>

@@ -85,15 +85,31 @@ export default function Footer() {
             <div className="space-y-3">
               <div className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-jet2-orange" />
-                <span className="text-gray-300 text-sm">01213141080</span>
+                <a
+                  href="tel:+441213141080"
+                  aria-label="Call Air2Transport on 0121 314 1080"
+                  className="text-gray-300 hover:text-jet2-orange transition-colors text-sm"
+                >
+                  01213141080
+                </a>
               </div>
               <div className="flex items-center space-x-3">
                 <Mail className="h-4 w-4 text-jet2-orange" />
-                <span className="text-gray-300 text-sm">info@air2transport.com</span>
+                <a
+                  href="mailto:info@air2transport.com"
+                  className="text-gray-300 hover:text-jet2-orange transition-colors text-sm"
+                >
+                  info@air2transport.com
+                </a>
               </div>
               <div className="flex items-center space-x-3">
                 <MapPin className="h-4 w-4 text-jet2-orange" />
-                <span className="text-gray-300 text-sm">Birmingham, UK</span>
+                <Link
+                  href="/contact"
+                  className="text-gray-300 hover:text-jet2-orange transition-colors text-sm"
+                >
+                  Birmingham, UK
+                </Link>
               </div>
               <div className="flex items-center space-x-3">
                 <Clock className="h-4 w-4 text-jet2-orange" />
