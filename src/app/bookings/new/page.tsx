@@ -213,10 +213,22 @@ export default function NewBookingPage() {
       const { data: { user }, error: authError } = await supabase.auth.getUser()
       
       if (authError || !user) {
-        // User is not authenticated - use guest_bookings table
-        const { data, error } = await supabase
+        // User is not authenticated - use guest_bookings table.
+        //
+        // The id is generated here rather than read back from the insert
+        // response: guest_bookings has no SELECT policy for the anon role
+        // (there's no auth.uid()-linkable column to scope one by without
+        // exposing every guest's booking to every other anonymous visitor),
+        // so chaining .select() after .insert() - which makes supabase-js
+        // send `Prefer: return=representation` - makes PostgREST try to
+        // read the row back under RLS and fails the whole insert. Passing
+        // the id explicitly and dropping .select() sends
+        // `Prefer: return=minimal` instead, which needs no SELECT access.
+        const guestBookingId = crypto.randomUUID()
+        const { error } = await supabase
           .from('guest_bookings')
           .insert([{
+            id: guestBookingId,
             customer_name: formData.customerName,
             customer_email: formData.customerEmail,
             customer_phone: formData.customerPhone,
@@ -232,8 +244,6 @@ export default function NewBookingPage() {
             special_requests: formData.specialRequests,
             payment_intent_id: paymentIntentId
           }])
-          .select()
-          .single()
 
         if (error) throw error
 
@@ -263,7 +273,7 @@ export default function NewBookingPage() {
         // Send admin notification email
         try {
           await sendAdminBookingNotification({
-            bookingId: data.id,
+            bookingId: guestBookingId,
             customerName: formData.customerName,
             customerEmail: formData.customerEmail,
             customerPhone: formData.customerPhone,

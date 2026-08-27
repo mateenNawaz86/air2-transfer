@@ -25,18 +25,27 @@ export default function ContactPage() {
     try {
       const supabase = createClient()
 
-      // Save enquiry to database
-      const { data, error } = await supabase
+      // Save enquiry to database.
+      //
+      // The id is generated here rather than read back from the insert
+      // response: enquiries has no SELECT policy for the anon role (there's
+      // no auth.uid()-linkable column to scope one by without exposing
+      // every visitor's enquiry to every other anonymous visitor), so
+      // chaining .select() after .insert() - which makes supabase-js send
+      // `Prefer: return=representation` - makes PostgREST try to read the
+      // row back under RLS and fails the whole insert. Passing the id
+      // explicitly and dropping .select() sends `Prefer: return=minimal`
+      // instead, which needs no SELECT access.
+      const { error } = await supabase
         .from('enquiries')
         .insert([{
+          id: crypto.randomUUID(),
           name: formData.name,
           email: formData.email,
           phone: formData.phone || null,
           subject: formData.subject,
           message: formData.message
         }])
-        .select()
-        .single()
 
       if (error) throw error
 
