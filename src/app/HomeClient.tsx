@@ -97,14 +97,14 @@ export default function Home() {
   const services = [
     {
       title: 'Airport Transfers',
-      description: 'On time, every time',
+      description: 'on time, every time',
       icon: Plane,
       image: 'https://assetshost.sirv.com/jet2transport/J2T_website_impovements.pdf-image-009.jpg',
       link: SERVICE_ROUTES.airportTransfers
     },
     {
       title: 'Corporate Travel',
-      description: 'Professional rides for business minds',
+      description: 'Professional rides for meetings and business travel',
       icon: Building,
       image: 'https://assetshost.sirv.com/jet2transport/J2T_website_impovements.pdf-image-010.jpg',
       link: SERVICE_ROUTES.chauffeurServices
@@ -156,7 +156,7 @@ export default function Home() {
     },
     {
       name: 'Emma Thompson',
-      role: 'Frequent Traveler',
+      role: 'Frequent Traveller',
       content: 'Reliable, comfortable, and always on time. Air2Transport is my go-to choice for airport transfers.',
       rating: 5,
       image: 'https://assetshost.sirv.com/jet2transport/testimonial-emma.jpg'
@@ -167,7 +167,7 @@ export default function Home() {
     {
       icon: Shield,
       title: 'Professional Drivers',
-      description: 'Trained, licensed & reliable Drivers'
+      description: 'Trained, licensed and reliable drivers'
     },
     {
       icon: Car,
@@ -182,7 +182,7 @@ export default function Home() {
     {
       icon: Zap,
       title: 'Tailored Service',
-      description: 'Your journey, your way'
+      description: 'Flexible bookings tailored to your schedule'
     }
   ]
 
@@ -315,8 +315,8 @@ export default function Home() {
     },
     {
       icon: Clock,
-      title: '60 Min Waiting Time',
-      description: 'Complimentary waiting time included'
+      title: 'Waiting Time',
+      description: "60 minutes' complimentary waiting time"
     }
   ]
 
@@ -432,11 +432,10 @@ export default function Home() {
               <h2 className="text-4xl font-bold text-jet2-dark mb-6">
                 Your Go-To Choice for Transfers Across the UK
               </h2>
-              <p className="text-lg text-jet2-gray mb-6 leading-relaxed">
-                At Air2Transport, we provide reliable private hire services tailored to every type of journey. From airport transfers and city travel to school runs and corporate accounts, our team is here to keep you moving safely and on time
-              </p>
               <p className="text-lg text-jet2-gray mb-8 leading-relaxed">
-                Our licensed drivers, modern vehicles, and 24/7 availability make us the trusted choice for individuals, families, businesses, and local authorities nationwide. Whether it’s a one-off trip or ongoing contract work, we deliver transport solutions you can depend on
+                Air2Transport provides dependable private-hire travel for airport transfers, city journeys, corporate
+                accounts and special occasions. Our professional drivers and comfortable vehicles are available
+                around the clock for one-off bookings and ongoing transport requirements.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <Link href="/bookings/new/" className="btn-primary hover:animate-pulse">
@@ -894,7 +893,7 @@ export default function Home() {
               quoteAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
             }`}>
               <p className="text-jet2-gray mb-4">
-                Get 10% Discount for advance booking - Use code: <span className="font-bold text-jet2-orange animate-pulse">A2T10</span>
+                Save 10% when you book in advance with code <span className="font-bold text-jet2-orange animate-pulse">A2T10</span>.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <div className="flex items-center text-jet2-gray">
@@ -977,17 +976,17 @@ export default function Home() {
             ctaAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
           }`}
         >
-          <h2 className="text-4xl font-bold text-white mb-4">Ready to Book Your Ride?</h2>
+          <h2 className="text-4xl font-bold text-white mb-4">Ready to book your journey?</h2>
           <p className={`text-xl text-white opacity-90 mb-8 max-w-2xl mx-auto transition-all duration-1000 delay-300 ${
             ctaAnimation.isVisible ? 'opacity-90' : 'opacity-0 translate-y-8'
           }`}>
-            Book your ride with Air2Transport and enjoy the flexibility of standard transfers or executive chauffeur services — always reliable, always comfortable
+            Choose a standard transfer or an executive chauffeur service, with dependable support from booking to arrival.
           </p>
           <div className={`flex flex-col sm:flex-row gap-4 justify-center transition-all duration-1000 delay-600 ${
             ctaAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
           }`}>
             <Link href="/bookings/new/" className="bg-white text-jet2-orange hover:bg-gray-100 font-semibold py-4 px-8 rounded-lg transition-all duration-300 transform hover:scale-105 shadow-lg">
-              Book Your Ride
+              Book Your Transfer
             </Link>
             <Link href="/#instant-quote" className="border-2 border-white text-white hover:bg-white hover:text-jet2-orange font-semibold py-4 px-8 rounded-lg transition-all duration-300">
               Get an Instant Quote
