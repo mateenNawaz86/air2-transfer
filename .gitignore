@@ -118,3 +118,7 @@ supabase-user-backfill/
 # Local admin/debug scripts (service-role key usage, generated credentials) — never commit or ship these
 scripts/
 
+
+# Client audit/feedback docs — working notes, not part of the app
+home-page-changes-*.md
+home-page-changes-*.pdf

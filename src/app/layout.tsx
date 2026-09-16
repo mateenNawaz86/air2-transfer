@@ -19,9 +19,9 @@ export const metadata: Metadata = {
   keywords: 'car transfer, airport transfer, chauffeur service, executive transport, luxury cars, UK transport',
   authors: [{ name: 'Air2Transport' }],
   icons: {
-    icon: 'https://assetshost.sirv.com/jet2transport/favicon.ico',
-    shortcut: 'https://assetshost.sirv.com/jet2transport/favicon.ico',
-    apple: 'https://assetshost.sirv.com/jet2transport/logoair2.png',
+    icon: '/logoair2.png',
+    shortcut: '/logoair2.png',
+    apple: '/logoair2.png',
   },
   openGraph: {
     title: 'Air2Transport - Premium Car Transfer Services',
@@ -47,9 +47,8 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="https://assetshost.sirv.com/jet2transport/favicon.ico" sizes="any" />
-        <link rel="icon" href="https://assetshost.sirv.com/jet2transport/logoair2.png" type="image/svg+xml" />
-        <link rel="apple-touch-icon" href="https://assetshost.sirv.com/jet2transport/logoair2.png" />
+        <link rel="icon" href="/logoair2.png" type="image/png" sizes="any" />
+        <link rel="apple-touch-icon" href="/logoair2.png" />
       </head>
       <body className={`${inter.className} antialiased`}>
         <JsonLd data={buildOrganizationSchema()} />

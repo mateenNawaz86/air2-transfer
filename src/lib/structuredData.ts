@@ -1,4 +1,4 @@
-import { SITE_URL } from '@/lib/siteConfig'
+import { SITE_URL, PHONE_E164 } from '@/lib/siteConfig'
 
 /**
  * Site audit — "No structured data": adds JSON-LD schema based only on
@@ -10,8 +10,8 @@ import { SITE_URL } from '@/lib/siteConfig'
  */
 
 const BUSINESS_NAME = 'Air2Transport'
-const LOGO_URL = 'https://assetshost.sirv.com/jet2transport/logoair2.png'
-const TELEPHONE = '+441213141080'
+const LOGO_URL = `${SITE_URL}/logoair2.png`
+const TELEPHONE = PHONE_E164
 const EMAIL = 'info@air2transport.com'
 
 const ALL_DAYS = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']

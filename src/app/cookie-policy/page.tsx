@@ -3,6 +3,7 @@ import { ArrowLeft } from 'lucide-react'
 import { buildPageMetadata } from '@/lib/pageMetadata'
 import { buildBreadcrumbSchema } from '@/lib/structuredData'
 import JsonLd from '@/components/JsonLd'
+import { PHONE_DISPLAY, PHONE_ARIA_LABEL, PHONE_TEL_HREF } from '@/lib/siteConfig'
 
 export const metadata = buildPageMetadata({
   path: '/cookie-policy/',
@@ -120,7 +121,7 @@ export default function CookiePolicyPage() {
             <div className="bg-gray-50 p-4 rounded-lg">
               <p className="text-gray-700">
                 <strong>Email:</strong> info@air2transport.com<br />
-                <strong>Phone:</strong> 01213141080<br />
+                <strong>Phone:</strong> <a href={PHONE_TEL_HREF} aria-label={PHONE_ARIA_LABEL} className="hover:underline">{PHONE_DISPLAY}</a><br />
                 <strong>Address:</strong> Birmingham, UK
               </p>
             </div>

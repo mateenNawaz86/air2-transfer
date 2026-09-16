@@ -28,6 +28,7 @@ import { useScrollAnimation, useStaggeredScrollAnimation } from '@/hooks/useScro
 import { SERVICE_ROUTES } from '@/lib/serviceRoutes'
 import LocationInput from '@/components/LocationInput'
 import { getDistance, calculatePrice } from '@/lib/googleMaps'
+import { PHONE_DISPLAY, PHONE_ARIA_LABEL, PHONE_TEL_HREF } from '@/lib/siteConfig'
 
 export default function Home() {
   // Animation hooks
@@ -99,42 +100,42 @@ export default function Home() {
       title: 'Airport Transfers',
       description: 'on time, every time',
       icon: Plane,
-      image: 'https://assetshost.sirv.com/jet2transport/J2T_website_impovements.pdf-image-009.jpg',
+      image: '/images/J2T_website_impovements.pdf-image-009.jpg',
       link: SERVICE_ROUTES.airportTransfers
     },
     {
       title: 'Corporate Travel',
       description: 'Professional rides for meetings and business travel',
       icon: Building,
-      image: 'https://assetshost.sirv.com/jet2transport/J2T_website_impovements.pdf-image-010.jpg',
+      image: '/images/J2T_website_impovements.pdf-image-010.jpg',
       link: SERVICE_ROUTES.chauffeurServices
     },
     {
       title: 'Event Transportation',
       description: 'Arrive in style, every occasion',
       icon: Calendar,
-      image: 'https://assetshost.sirv.com/jet2transport/J2T_website_impovements.pdf-image-008.jpg',
+      image: '/images/J2T_website_impovements.pdf-image-008.jpg',
       link: SERVICE_ROUTES.eventsAndWeddings
     },
     {
       title: 'Intercity Travel',
       description: 'Seamless journeys city to city',
       icon: Navigation,
-      image: 'https://assetshost.sirv.com/jet2transport/J2T_website_impovements.pdf-image-007.jpg',
+      image: '/images/J2T_website_impovements.pdf-image-007.jpg',
       link: SERVICE_ROUTES.cityToCityTransfers
     },
     {
       title: 'Wedding Transfers',
       description: 'Your perfect ride for the perfect day',
       icon: Heart,
-      image: 'https://assetshost.sirv.com/jet2transport/J2T_website_impovements.pdf-image-005.jpg',
+      image: '/images/J2T_website_impovements.pdf-image-005.jpg',
       link: SERVICE_ROUTES.eventsAndWeddings
     },
     {
       title: 'Hourly & Full-Day Hire',
       description: 'Your car, your schedule',
       icon: Clock,
-      image: 'https://assetshost.sirv.com/jet2transport/J2T_website_impovements.pdf-image-006.png',
+      image: '/images/J2T_website_impovements.pdf-image-006.png',
       link: SERVICE_ROUTES.chauffeurServices
     }
   ]
@@ -145,21 +146,21 @@ export default function Home() {
       role: 'Business Executive',
       content: 'Exceptional service! The driver was punctual, professional, and the car was immaculate. Highly recommended for business travel.',
       rating: 5,
-      image: 'https://assetshost.sirv.com/jet2transport/testimonial-sarah.jpg'
+      image: '/images/testimonial-sarah.jpg'
     },
     {
       name: 'Michael Chen',
       role: 'Wedding Client',
       content: 'Our wedding day was made perfect with Air2Transport. The luxury car and professional service exceeded our expectations.',
       rating: 5,
-      image: 'https://assetshost.sirv.com/jet2transport/testimonial-michael.jpg'
+      image: '/images/testimonial-michael.jpg'
     },
     {
       name: 'Emma Thompson',
       role: 'Frequent Traveller',
       content: 'Reliable, comfortable, and always on time. Air2Transport is my go-to choice for airport transfers.',
       rating: 5,
-      image: 'https://assetshost.sirv.com/jet2transport/testimonial-emma.jpg'
+      image: '/images/testimonial-emma.jpg'
     }
   ]
 
@@ -192,42 +193,42 @@ export default function Home() {
       category: 'Economy',
       passengers: 4,
       luggage: 2,
-      image: 'https://assetshost.sirv.com/jet2transport/2025_toyota_prius_xle-awd_001_0218.png'
+      image: '/images/2025_toyota_prius_xle-awd_001_0218.png'
     },
     {
       name: 'Comfort',
       category: 'Comfort',
       passengers: 4,
       luggage: 2,
-      image: 'https://assetshost.sirv.com/jet2transport/Mercedes%20C-Class.png'
+      image: '/images/Mercedes-C-Class.png'
     },
     {
       name: 'Executive',
       category: 'Executive',
       passengers: 4,
       luggage: 2,
-      image: 'https://assetshost.sirv.com/jet2transport/Mercedes%20S-Class.png'
+      image: '/images/Mercedes-S-Class.png'
     },
     {
       name: 'Executive Business',
       category: 'Executive Business',
       passengers: 4,
       luggage: 2,
-      image: 'https://assetshost.sirv.com/jet2transport/BMW%207%20Series.png'
+      image: '/images/BMW-7-Series.png'
     },
     {
       name: 'XL',
       category: 'XL',
       passengers: 6,
       luggage: 4,
-      image: 'https://assetshost.sirv.com/jet2transport/Mercedes%20Vito.png'
+      image: '/images/Mercedes-Vito.png'
     },
     {
       name: 'Executive Business XL',
       category: 'Executive Business XL',
       passengers: 8,
       luggage: 6,
-      image: 'https://assetshost.sirv.com/jet2transport/Mercedes%20Sprinter.png'
+      image: '/images/Mercedes-Sprinter.png'
     }
   ]
 
@@ -248,42 +249,42 @@ export default function Home() {
     {
       name: 'London',
       slug: 'london',
-      image: 'https://assetshost.sirv.com/jet2transport/city-london.jpg'
+      image: '/images/city-london.jpg'
     },
     {
       name: 'Birmingham',
       slug: 'birmingham',
-      image: 'https://assetshost.sirv.com/jet2transport/city-birmingham.jpg'
+      image: '/images/city-birmingham.jpg'
     },
     {
       name: 'Manchester',
       slug: 'manchester',
-      image: 'https://assetshost.sirv.com/jet2transport/city-manchester.jpg'
+      image: '/images/city-manchester.jpg'
     },
     {
       name: 'Leeds',
       slug: 'leeds',
-      image: 'https://assetshost.sirv.com/jet2transport/city-leeds.jpg'
+      image: '/images/city-leeds.jpg'
     },
     {
       name: 'Bristol',
       slug: null,
-      image: 'https://assetshost.sirv.com/jet2transport/city-bristol.jpg'
+      image: '/images/city-bristol.jpg'
     },
     {
       name: 'Sheffield',
       slug: 'sheffield',
-      image: 'https://assetshost.sirv.com/jet2transport/city-sheffield.jpg'
+      image: '/images/city-sheffield.jpg'
     },
     {
       name: 'Nottingham',
       slug: 'nottingham',
-      image: 'https://assetshost.sirv.com/jet2transport/city-nottingham.jpg'
+      image: '/images/city-nottingham.jpg'
     },
     {
       name: 'Leicester',
       slug: null,
-      image: 'https://assetshost.sirv.com/jet2transport/city-leicester.jpg'
+      image: '/images/city-leicester.jpg'
     }
   ]
 
@@ -350,7 +351,7 @@ export default function Home() {
         {/* Background Image covering entire section */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://assetshost.sirv.com/jet2transport/1.jpg"
+            src="/images/1.jpg"
             alt="Luxury transfer service"
             fill
             className="object-cover animate-scale-in"
@@ -443,7 +444,7 @@ export default function Home() {
                 </Link>
                 <div className="flex items-center text-jet2-orange font-semibold animate-float">
                   <Phone className="h-5 w-5 mr-2" />
-                  <span>01213141080</span>
+                  <a href={PHONE_TEL_HREF} aria-label={PHONE_ARIA_LABEL} className="hover:underline">{PHONE_DISPLAY}</a>
                 </div>
               </div>
             </div>
@@ -451,7 +452,7 @@ export default function Home() {
               aboutAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
             }`}>
               <img
-                src="https://assetshost.sirv.com/jet2transport/3.jpg"
+                src="/images/3.jpg"
                 alt="Executive car transfer service"
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
               />
@@ -898,7 +899,7 @@ export default function Home() {
               <div className="flex flex-col sm:flex-row gap-4 justify-center">
                 <div className="flex items-center text-jet2-gray">
                   <Phone className="h-5 w-5 mr-2 text-jet2-orange" />
-                  <span>01213141080</span>
+                  <a href={PHONE_TEL_HREF} aria-label={PHONE_ARIA_LABEL} className="hover:underline">{PHONE_DISPLAY}</a>
                 </div>
                 <div className="flex items-center text-jet2-gray">
                   <Mail className="h-5 w-5 mr-2 text-jet2-orange" />

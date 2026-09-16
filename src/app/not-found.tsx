@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import { PHONE_DISPLAY, PHONE_ARIA_LABEL, PHONE_TEL_HREF } from '@/lib/siteConfig'
 
 export default function NotFound() {
   return (
@@ -27,7 +28,7 @@ export default function NotFound() {
           <div className="text-gray-400 text-sm">
             <p>Need help? Contact us at:</p>
             <p className="text-blue-400">info@air2transport.com</p>
-            <p className="text-blue-400">01213141080</p>
+            <p className="text-blue-400"><a href={PHONE_TEL_HREF} aria-label={PHONE_ARIA_LABEL} className="hover:underline">{PHONE_DISPLAY}</a></p>
           </div>
         </div>
         

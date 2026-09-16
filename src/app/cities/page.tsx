@@ -94,7 +94,7 @@ export default function CitiesPage() {
               <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow text-center">
                 <div className="bg-gray-100 h-32 rounded-lg mb-4 overflow-hidden">
                   <img 
-                    src="https://assetshost.sirv.com/jet2transport/london.jpg" 
+                    src="/images/london.jpg" 
                     alt="London cityscape" 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
@@ -108,7 +108,7 @@ export default function CitiesPage() {
               <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow text-center">
                 <div className="bg-gray-100 h-32 rounded-lg mb-4 overflow-hidden">
                   <img 
-                    src="https://assetshost.sirv.com/jet2transport/birmingham.jpg" 
+                    src="/images/birmingham.jpg" 
                     alt="Birmingham cityscape" 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
@@ -122,7 +122,7 @@ export default function CitiesPage() {
               <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow text-center">
                 <div className="bg-gray-100 h-32 rounded-lg mb-4 overflow-hidden">
                   <img 
-                    src="https://assetshost.sirv.com/jet2transport/manchester.jpg" 
+                    src="/images/manchester.jpg" 
                     alt="Manchester cityscape" 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
@@ -136,7 +136,7 @@ export default function CitiesPage() {
               <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow text-center">
                 <div className="bg-gray-100 h-32 rounded-lg mb-4 overflow-hidden">
                   <img 
-                    src="https://assetshost.sirv.com/jet2transport/leeds.jpg" 
+                    src="/images/leeds.jpg" 
                     alt="Leeds cityscape" 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
@@ -150,7 +150,7 @@ export default function CitiesPage() {
               <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow text-center">
                 <div className="bg-gray-100 h-32 rounded-lg mb-4 overflow-hidden">
                   <img 
-                    src="https://assetshost.sirv.com/jet2transport/liverpool.jpg" 
+                    src="/images/liverpool.jpg" 
                     alt="Liverpool cityscape" 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
@@ -164,7 +164,7 @@ export default function CitiesPage() {
               <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow text-center">
                 <div className="bg-gray-100 h-32 rounded-lg mb-4 overflow-hidden">
                   <img 
-                    src="https://assetshost.sirv.com/jet2transport/sheffield.jpg" 
+                    src="/images/sheffield.jpg" 
                     alt="Sheffield cityscape" 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
@@ -178,7 +178,7 @@ export default function CitiesPage() {
               <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow text-center">
                 <div className="bg-gray-100 h-32 rounded-lg mb-4 overflow-hidden">
                   <img 
-                    src="https://assetshost.sirv.com/jet2transport/nottingham.jpg" 
+                    src="/images/nottingham.jpg" 
                     alt="Nottingham cityscape" 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />
@@ -192,7 +192,7 @@ export default function CitiesPage() {
               <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow text-center">
                 <div className="bg-gray-100 h-32 rounded-lg mb-4 overflow-hidden">
                   <img 
-                    src="https://assetshost.sirv.com/jet2transport/coventry.jpg" 
+                    src="/images/coventry.jpg" 
                     alt="Coventry cityscape" 
                     className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
                   />

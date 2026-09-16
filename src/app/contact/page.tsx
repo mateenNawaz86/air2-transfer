@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import Link from 'next/link'
 import { createClient } from '@/lib/auth'
+import { PHONE_DISPLAY, PHONE_ARIA_LABEL, PHONE_TEL_HREF } from '@/lib/siteConfig'
 import { Phone, Mail, MapPin, Clock, MessageSquare, Send, CheckCircle, AlertCircle } from 'lucide-react'
 
 export default function ContactPage() {
@@ -111,7 +112,7 @@ export default function ContactPage() {
                 <Phone className="h-8 w-8 text-white" />
               </div>
               <h3 className="text-xl font-semibold mb-3">Phone</h3>
-                              <p className="text-gray-600 mb-2">01213141080</p>
+              <p className="text-gray-600 mb-2">{PHONE_DISPLAY}</p>
             </div>
 
             <div className="bg-white p-8 rounded-lg shadow-lg text-center">
@@ -343,7 +344,8 @@ export default function ContactPage() {
               Book Now
             </Link>
             <a 
-                              href="tel:01213141080" 
+              href={PHONE_TEL_HREF}
+              aria-label={PHONE_ARIA_LABEL}
               className="border border-white text-white px-8 py-4 rounded-lg font-semibold text-lg hover:bg-white hover:text-jet2-dark transition-colors"
             >
               Call Us

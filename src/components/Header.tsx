@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import Image from 'next/image'
 import { useRouter } from 'next/navigation'
+import { PHONE_DISPLAY, PHONE_ARIA_LABEL, PHONE_TEL_HREF } from '@/lib/siteConfig'
 import { Menu, X, Phone, Mail, MapPin, ChevronDown, LogOut, User, Settings } from 'lucide-react'
 import { createClient } from '@/lib/auth'
 import { SERVICE_ROUTES } from '@/lib/serviceRoutes'
@@ -215,11 +216,11 @@ export default function Header() {
               <div className="flex items-center space-x-2">
                 <Phone className="h-5 w-5 text-jet2-orange" />
                 <a
-                  href="tel:+441213141080"
-                  aria-label="Call Air2Transport on 0121 314 1080"
+                  href={PHONE_TEL_HREF}
+                  aria-label={PHONE_ARIA_LABEL}
                   className="font-bold text-base hover:text-white transition-colors phone-color-animation"
                 >
-                  01213141080
+                  {PHONE_DISPLAY}
                 </a>
               </div>
               <div className="flex items-center space-x-2">
@@ -243,7 +244,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center">
             <Image
-              src="https://assetshost.sirv.com/jet2transport/logoair2.png"
+              src="/logoair2.png"
               alt="Air2Transport"
               width={130}
               height={60}

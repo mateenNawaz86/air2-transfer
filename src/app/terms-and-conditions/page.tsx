@@ -2,6 +2,7 @@
 
 import Link from 'next/link'
 import { Shield, FileText, AlertTriangle, CheckCircle } from 'lucide-react'
+import { PHONE_DISPLAY, PHONE_ARIA_LABEL, PHONE_TEL_HREF } from '@/lib/siteConfig'
 
 export default function TermsAndConditionsPage() {
   return (
@@ -141,7 +142,7 @@ export default function TermsAndConditionsPage() {
                 </p>
                 <div className="bg-jet2-light p-6 rounded-lg">
                   <p className="text-jet2-gray mb-2">Email: info@air2transport.com</p>
-                  <p className="text-jet2-gray mb-2">Phone: 01213141080</p>
+                  <p className="text-jet2-gray mb-2">Phone: <a href={PHONE_TEL_HREF} aria-label={PHONE_ARIA_LABEL} className="hover:underline">{PHONE_DISPLAY}</a></p>
                   <p className="text-jet2-gray">Address: Birmingham, UK</p>
                 </div>
               </div>

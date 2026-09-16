@@ -80,6 +80,26 @@ const nextConfig = {
   async headers() {
     return [
       {
+        // Self-hosted images: the CDN they replaced served ~7-day cache headers,
+        // whereas Next serves public/ as max-age=0 by default. Restores parity
+        // with stale-while-revalidate so replacements still propagate quickly.
+        source: '/images/:path*',
+        headers: [
+          {
+            key: 'Cache-Control',
+            value: 'public, max-age=604800, stale-while-revalidate=86400',
+          },
+        ],
+      },
+      {
+        source: '/logoair2.png',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=604800, stale-while-revalidate=86400' }],
+      },
+      {
+        source: '/logoair2-white.png',
+        headers: [{ key: 'Cache-Control', value: 'public, max-age=604800, stale-while-revalidate=86400' }],
+      },
+      {
         source: '/_next/static/:path*',
         headers: [
           {

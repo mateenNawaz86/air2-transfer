@@ -22,6 +22,7 @@ import {
   Calendar
 } from 'lucide-react'
 import { useScrollAnimation, useStaggeredScrollAnimation } from '@/hooks/useScrollAnimation'
+import { PHONE_DISPLAY, PHONE_ARIA_LABEL, PHONE_TEL_HREF } from '@/lib/siteConfig'
 
 export default function ChauffeurServicesPage() {
   const heroAnimation = useScrollAnimation()
@@ -359,7 +360,7 @@ export default function ChauffeurServicesPage() {
           <div className="mt-12 flex flex-col sm:flex-row gap-8 justify-center text-white">
             <div className="flex items-center">
               <Phone className="h-5 w-5 mr-2" />
-              <span>01213141080</span>
+              <a href={PHONE_TEL_HREF} aria-label={PHONE_ARIA_LABEL} className="hover:underline">{PHONE_DISPLAY}</a>
             </div>
             <div className="flex items-center">
               <Mail className="h-5 w-5 mr-2" />

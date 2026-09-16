@@ -2,6 +2,7 @@ import Link from 'next/link'
 import Image from 'next/image'
 import { Phone, Mail, MapPin, Clock } from 'lucide-react'
 import { SERVICE_ROUTES } from '@/lib/serviceRoutes'
+import { PHONE_DISPLAY, PHONE_ARIA_LABEL, PHONE_TEL_HREF } from '@/lib/siteConfig'
 
 export default function Footer() {
   const currentYear = new Date().getFullYear()
@@ -31,7 +32,7 @@ export default function Footer() {
           <div className="space-y-4">
             <Link href="/" className="inline-block">
               <Image
-                src="https://assetshost.sirv.com/jet2transport/logoair2-white.png"
+                src="/logoair2-white.png"
                 alt="Air2Transport"
                 width={200}
                 height={48}
@@ -86,11 +87,11 @@ export default function Footer() {
               <div className="flex items-center space-x-3">
                 <Phone className="h-4 w-4 text-jet2-orange" />
                 <a
-                  href="tel:+441213141080"
-                  aria-label="Call Air2Transport on 0121 314 1080"
+                  href={PHONE_TEL_HREF}
+                  aria-label={PHONE_ARIA_LABEL}
                   className="text-gray-300 hover:text-jet2-orange transition-colors text-sm"
                 >
-                  01213141080
+                  {PHONE_DISPLAY}
                 </a>
               </div>
               <div className="flex items-center space-x-3">
