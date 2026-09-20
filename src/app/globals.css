@@ -16,7 +16,15 @@
   animation: phone-color-pulse 2s ease-in-out infinite;
 }
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+/*
+ * No @import for Inter here. It sat below these rules, so browsers ignored
+ * it outright (@import must precede every style rule) and Chrome flagged it
+ * — the font it claimed to load was never actually fetched this way.
+ * Moving it to the top would have been the wrong fix: layout.tsx already
+ * loads Inter through next/font/google, which self-hosts the files, so the
+ * import was redundant as well as inert. Dropping it also spares every
+ * visitor a render-blocking request to fonts.googleapis.com.
+ */
 
 :root {
   --foreground-rgb: 0, 0, 0;
@@ -24,13 +32,15 @@
   --background-end-rgb: 255, 255, 255;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
-}
+/*
+ * This site has no dark theme: every surface is a hardcoded light colour
+ * (bg-white, bg-gray-50, light gradients). A prefers-color-scheme: dark
+ * block used to flip --foreground-rgb to white here, which turned every
+ * heading that inherits its colour into white-on-white — invisible to
+ * anyone whose OS is set to dark mode. Removed so dark mode renders
+ * identically to light mode. Text on dark surfaces sets text-white
+ * explicitly and is unaffected.
+ */
 
 * {
   box-sizing: border-box;
@@ -59,10 +69,10 @@ a {
   text-decoration: none;
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
+html {
+  /* Light-only UI: stops browsers auto-darkening form controls and
+     scrollbars against these permanently light surfaces. */
+  color-scheme: light;
 }
 
 /* Custom scrollbar */

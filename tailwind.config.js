@@ -7,6 +7,11 @@ module.exports = {
   ],
   theme: {
     extend: {
+      // Additive only — every default breakpoint is untouched. 'xs' covers the
+      // 320–374px phones where the header contact strip overflowed.
+      screens: {
+        'xs': '375px',
+      },
       colors: {
         'jet2': {
           'orange': '#ff6b1c',

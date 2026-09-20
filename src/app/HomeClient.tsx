@@ -362,10 +362,10 @@ export default function Home() {
 
         {/* Content - shares the same site container/margins as every section below */}
         <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-left text-white max-w-lg">
-            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 animate-slide-in-left">
-              Your Trusted Partner
-              <span className="block gradient-text animate-slide-in-left animate-delay-200">for Transfer Services</span>
+          <div className="text-left text-white max-w-2xl">
+            <h1 className="text-balance text-3xl md:text-4xl lg:text-5xl font-bold mb-6 animate-slide-in-left">
+              Reliable Airport Transfers and Chauffeur Services{' '}
+              <span className="block gradient-text animate-slide-in-left animate-delay-200">Across the UK</span>
             </h1>
             <p className="text-lg md:text-xl lg:text-2xl mb-8 opacity-90 animate-slide-in-left animate-delay-400">
               Birmingham • London • Manchester

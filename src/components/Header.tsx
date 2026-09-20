@@ -211,9 +211,9 @@ export default function Header() {
       {/* Top bar */}
       <div className="bg-jet2-dark text-white py-2">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center text-sm">
-            <div className="flex items-center space-x-6">
-              <div className="flex items-center space-x-2">
+          <div className="flex justify-between items-center gap-3 text-sm">
+            <div className="flex items-center gap-3 sm:gap-6 min-w-0">
+              <div className="flex items-center space-x-2 flex-shrink-0">
                 <Phone className="h-5 w-5 text-jet2-orange" />
                 <a
                   href={PHONE_TEL_HREF}
@@ -223,9 +223,13 @@ export default function Header() {
                   {PHONE_DISPLAY}
                 </a>
               </div>
-              <div className="flex items-center space-x-2">
-                <Mail className="h-4 w-4" />
-                <a href="mailto:info@air2transport.com" className="hover:text-jet2-orange transition-colors">
+              <div className="flex items-center space-x-2 min-w-0">
+                <Mail className="h-4 w-4 flex-shrink-0" />
+                <a
+                  href="mailto:info@air2transport.com"
+                  aria-label="Email Air2Transport at info@air2transport.com"
+                  className="hidden xs:inline truncate hover:text-jet2-orange transition-colors"
+                >
                   info@air2transport.com
                 </a>
               </div>
@@ -242,7 +246,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center py-4">
           {/* Logo */}
-          <Link href="/" className="flex items-center">
+          <Link href="/" className="flex items-center flex-shrink-0">
             <Image
               src="/logoair2.png"
               alt="Air2Transport"
@@ -254,13 +258,13 @@ export default function Header() {
           </Link>
 
           {/* Navigation */}
-          <nav className="hidden lg:flex items-center space-x-8">
+          <nav className="hidden lg:flex items-center gap-4 xl:gap-8">
             {navigation.map((item) => (
               <div key={item.name} className="relative">
                 {item.dropdown ? (
                   <button
                     onClick={() => toggleDropdown(item.name)}
-                    className="flex items-center space-x-1 text-jet2-dark hover:text-jet2-orange font-medium transition-colors duration-200"
+                    className="flex items-center space-x-1 whitespace-nowrap text-sm xl:text-base text-jet2-dark hover:text-jet2-orange font-medium transition-colors duration-200"
                   >
                     <span>{item.name}</span>
                     <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${
@@ -272,8 +276,8 @@ export default function Header() {
                     href={item.href}
                     className={`${
                       item.isButton
-                        ? 'btn-primary'
-                        : 'text-jet2-dark hover:text-jet2-orange font-medium transition-colors duration-200'
+                        ? 'whitespace-nowrap rounded-lg bg-jet2-orange px-4 py-2 text-sm xl:px-6 xl:py-3 xl:text-base font-semibold text-white shadow-lg transition-all duration-300 hover:bg-orange-600 hover:shadow-xl'
+                        : 'whitespace-nowrap text-sm xl:text-base text-jet2-dark hover:text-jet2-orange font-medium transition-colors duration-200'
                     }`}
                   >
                     {item.name}
@@ -358,7 +362,7 @@ export default function Header() {
               ) : (
                 <Link
                   href="/login"
-                  className="btn-primary flex items-center space-x-1"
+                  className="flex items-center space-x-1 whitespace-nowrap rounded-lg bg-jet2-orange px-4 py-2 text-sm xl:px-6 xl:py-3 xl:text-base font-semibold text-white shadow-lg transition-all duration-300 hover:bg-orange-600 hover:shadow-xl"
                 >
                   <User className="h-4 w-4" />
                   <span>Login</span>
@@ -370,7 +374,7 @@ export default function Header() {
           {/* Mobile menu button */}
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors"
+            className="lg:hidden p-2 rounded-lg hover:bg-gray-100 transition-colors flex-shrink-0"
           >
             {isMenuOpen ? (
               <X className="h-6 w-6 text-jet2-dark" />

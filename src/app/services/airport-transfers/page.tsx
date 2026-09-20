@@ -41,7 +41,7 @@ export default function AirportTransfersPage() {
               <div className="bg-jet2-orange w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Clock className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-3">24/7 Service</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">24/7 Service</h3>
               <p className="text-gray-600">
                 Available round the clock for all your airport transfer needs, regardless of flight times
               </p>
@@ -51,7 +51,7 @@ export default function AirportTransfersPage() {
               <div className="bg-jet2-orange w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <CheckCircle className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Flight Monitoring</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Flight Monitoring</h3>
               <p className="text-gray-600">
                 We track your flight and adjust pickup times automatically for delays or early arrivals
               </p>
@@ -61,7 +61,7 @@ export default function AirportTransfersPage() {
               <div className="bg-jet2-orange w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                 <Star className="h-8 w-8 text-white" />
               </div>
-              <h3 className="text-xl font-semibold mb-3">Premium Fleet</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Premium Fleet</h3>
               <p className="text-gray-600">
                 Travel in style with our luxury fleet, ensuring comfort and elegance
               </p>
@@ -81,7 +81,7 @@ export default function AirportTransfersPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
-              <h3 className="text-xl font-semibold mb-3">Meet & Greet</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Meet & Greet</h3>
               <p className="text-gray-600 mb-4">
                 Your driver will meet you at arrivals with a name board for easy identification
               </p>
@@ -93,7 +93,7 @@ export default function AirportTransfersPage() {
             </div>
 
             <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
-              <h3 className="text-xl font-semibold mb-3">Fixed Pricing</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Fixed Pricing</h3>
               <p className="text-gray-600 mb-4">
                 Transparent, fixed pricing with no hidden charges or surge pricing
               </p>
@@ -105,7 +105,7 @@ export default function AirportTransfersPage() {
             </div>
 
             <div className="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow">
-              <h3 className="text-xl font-semibold mb-3">Child Seats</h3>
+              <h3 className="text-xl font-semibold text-gray-900 mb-3">Child Seats</h3>
               <p className="text-gray-600 mb-4">
                 Complimentary child seats available for families traveling with children
               </p>
