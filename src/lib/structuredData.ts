@@ -10,7 +10,7 @@ import { SITE_URL, PHONE_E164 } from '@/lib/siteConfig'
  */
 
 const BUSINESS_NAME = 'Air2Transport'
-const LOGO_URL = `${SITE_URL}/logoair2.png`
+const LOGO_URL = 'https://assetshost.sirv.com/jet2transport/logoair2.png'
 const TELEPHONE = PHONE_E164
 const EMAIL = 'info@air2transport.com'
 

@@ -100,42 +100,42 @@ export default function Home() {
       title: 'Airport Transfers',
       description: 'on time, every time',
       icon: Plane,
-      image: '/images/J2T_website_impovements.pdf-image-009.jpg',
+      image: 'https://assetshost.sirv.com/jet2transport/J2T_website_impovements.pdf-image-009.jpg',
       link: SERVICE_ROUTES.airportTransfers
     },
     {
       title: 'Corporate Travel',
       description: 'Professional rides for meetings and business travel',
       icon: Building,
-      image: '/images/J2T_website_impovements.pdf-image-010.jpg',
+      image: 'https://assetshost.sirv.com/jet2transport/J2T_website_impovements.pdf-image-010.jpg',
       link: SERVICE_ROUTES.chauffeurServices
     },
     {
       title: 'Event Transportation',
       description: 'Arrive in style, every occasion',
       icon: Calendar,
-      image: '/images/J2T_website_impovements.pdf-image-008.jpg',
+      image: 'https://assetshost.sirv.com/jet2transport/J2T_website_impovements.pdf-image-008.jpg',
       link: SERVICE_ROUTES.eventsAndWeddings
     },
     {
       title: 'Intercity Travel',
       description: 'Seamless journeys city to city',
       icon: Navigation,
-      image: '/images/J2T_website_impovements.pdf-image-007.jpg',
+      image: 'https://assetshost.sirv.com/jet2transport/J2T_website_impovements.pdf-image-007.jpg',
       link: SERVICE_ROUTES.cityToCityTransfers
     },
     {
       title: 'Wedding Transfers',
       description: 'Your perfect ride for the perfect day',
       icon: Heart,
-      image: '/images/J2T_website_impovements.pdf-image-005.jpg',
+      image: 'https://assetshost.sirv.com/jet2transport/J2T_website_impovements.pdf-image-005.jpg',
       link: SERVICE_ROUTES.eventsAndWeddings
     },
     {
       title: 'Hourly & Full-Day Hire',
       description: 'Your car, your schedule',
       icon: Clock,
-      image: '/images/J2T_website_impovements.pdf-image-006.png',
+      image: 'https://assetshost.sirv.com/jet2transport/J2T_website_impovements.pdf-image-006.png',
       link: SERVICE_ROUTES.chauffeurServices
     }
   ]
@@ -146,21 +146,21 @@ export default function Home() {
       role: 'Business Executive',
       content: 'Exceptional service! The driver was punctual, professional, and the car was immaculate. Highly recommended for business travel.',
       rating: 5,
-      image: '/images/testimonial-sarah.jpg'
+      image: 'https://assetshost.sirv.com/jet2transport/testimonial-sarah.jpg'
     },
     {
       name: 'Michael Chen',
       role: 'Wedding Client',
       content: 'Our wedding day was made perfect with Air2Transport. The luxury car and professional service exceeded our expectations.',
       rating: 5,
-      image: '/images/testimonial-michael.jpg'
+      image: 'https://assetshost.sirv.com/jet2transport/testimonial-michael.jpg'
     },
     {
       name: 'Emma Thompson',
       role: 'Frequent Traveller',
       content: 'Reliable, comfortable, and always on time. Air2Transport is my go-to choice for airport transfers.',
       rating: 5,
-      image: '/images/testimonial-emma.jpg'
+      image: 'https://assetshost.sirv.com/jet2transport/testimonial-emma.jpg'
     }
   ]
 
@@ -193,42 +193,42 @@ export default function Home() {
       category: 'Economy',
       passengers: 4,
       luggage: 2,
-      image: '/images/2025_toyota_prius_xle-awd_001_0218.png'
+      image: 'https://assetshost.sirv.com/jet2transport/2025_toyota_prius_xle-awd_001_0218.png'
     },
     {
       name: 'Comfort',
       category: 'Comfort',
       passengers: 4,
       luggage: 2,
-      image: '/images/Mercedes-C-Class.png'
+      image: 'https://assetshost.sirv.com/jet2transport/Mercedes%20C-Class.png'
     },
     {
       name: 'Executive',
       category: 'Executive',
       passengers: 4,
       luggage: 2,
-      image: '/images/Mercedes-S-Class.png'
+      image: 'https://assetshost.sirv.com/jet2transport/Mercedes%20S-Class.png'
     },
     {
       name: 'Executive Business',
       category: 'Executive Business',
       passengers: 4,
       luggage: 2,
-      image: '/images/BMW-7-Series.png'
+      image: 'https://assetshost.sirv.com/jet2transport/BMW%207%20Series.png'
     },
     {
       name: 'XL',
       category: 'XL',
       passengers: 6,
       luggage: 4,
-      image: '/images/Mercedes-Vito.png'
+      image: 'https://assetshost.sirv.com/jet2transport/Mercedes%20Vito.png'
     },
     {
       name: 'Executive Business XL',
       category: 'Executive Business XL',
       passengers: 8,
       luggage: 6,
-      image: '/images/Mercedes-Sprinter.png'
+      image: 'https://assetshost.sirv.com/jet2transport/Mercedes%20Sprinter.png'
     }
   ]
 
@@ -249,42 +249,42 @@ export default function Home() {
     {
       name: 'London',
       slug: 'london',
-      image: '/images/city-london.jpg'
+      image: 'https://assetshost.sirv.com/jet2transport/city-london.jpg'
     },
     {
       name: 'Birmingham',
       slug: 'birmingham',
-      image: '/images/city-birmingham.jpg'
+      image: 'https://assetshost.sirv.com/jet2transport/city-birmingham.jpg'
     },
     {
       name: 'Manchester',
       slug: 'manchester',
-      image: '/images/city-manchester.jpg'
+      image: 'https://assetshost.sirv.com/jet2transport/city-manchester.jpg'
     },
     {
       name: 'Leeds',
       slug: 'leeds',
-      image: '/images/city-leeds.jpg'
+      image: 'https://assetshost.sirv.com/jet2transport/city-leeds.jpg'
     },
     {
       name: 'Bristol',
       slug: null,
-      image: '/images/city-bristol.jpg'
+      image: 'https://assetshost.sirv.com/jet2transport/city-bristol.jpg'
     },
     {
       name: 'Sheffield',
       slug: 'sheffield',
-      image: '/images/city-sheffield.jpg'
+      image: 'https://assetshost.sirv.com/jet2transport/city-sheffield.jpg'
     },
     {
       name: 'Nottingham',
       slug: 'nottingham',
-      image: '/images/city-nottingham.jpg'
+      image: 'https://assetshost.sirv.com/jet2transport/city-nottingham.jpg'
     },
     {
       name: 'Leicester',
       slug: null,
-      image: '/images/city-leicester.jpg'
+      image: 'https://assetshost.sirv.com/jet2transport/city-leicester.jpg'
     }
   ]
 
@@ -351,7 +351,7 @@ export default function Home() {
         {/* Background Image covering entire section */}
         <div className="absolute inset-0 z-0">
           <Image
-            src="/images/1.jpg"
+            src="https://assetshost.sirv.com/jet2transport/1.jpg"
             alt="Luxury transfer service"
             fill
             className="object-cover animate-scale-in"
@@ -452,7 +452,7 @@ export default function Home() {
               aboutAnimation.isVisible ? 'opacity-100' : 'opacity-0 translate-y-8'
             }`}>
               <img
-                src="/images/3.jpg"
+                src="https://assetshost.sirv.com/jet2transport/3.jpg"
                 alt="Executive car transfer service"
                 className="w-full h-full object-cover transition-transform duration-500 hover:scale-105"
               />

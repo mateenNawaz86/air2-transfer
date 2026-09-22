@@ -15,7 +15,7 @@ export default function FleetPage() {
       category: 'Economy',
       passengers: 4,
       luggage: 2,
-      image: '/images/2025_toyota_prius_xle-awd_001_0218.png',
+      image: 'https://assetshost.sirv.com/jet2transport/2025_toyota_prius_xle-awd_001_0218.png',
       href: '/fleet/economy-student'
     },
     {
@@ -23,7 +23,7 @@ export default function FleetPage() {
       category: 'Comfort',
       passengers: 4,
       luggage: 2,
-      image: '/images/Mercedes-C-Class.png',
+      image: 'https://assetshost.sirv.com/jet2transport/Mercedes%20C-Class.png',
       href: '/fleet/comfort'
     },
     {
@@ -31,7 +31,7 @@ export default function FleetPage() {
       category: 'Executive',
       passengers: 4,
       luggage: 2,
-      image: '/images/Mercedes-S-Class.png',
+      image: 'https://assetshost.sirv.com/jet2transport/Mercedes%20S-Class.png',
       href: '/fleet/executive'
     },
     {
@@ -39,7 +39,7 @@ export default function FleetPage() {
       category: 'Executive Business',
       passengers: 4,
       luggage: 2,
-      image: '/images/BMW-7-Series.png',
+      image: 'https://assetshost.sirv.com/jet2transport/BMW%207%20Series.png',
       href: '/fleet/executive-business'
     },
     {
@@ -47,7 +47,7 @@ export default function FleetPage() {
       category: 'XL',
       passengers: 6,
       luggage: 4,
-      image: '/images/Mercedes-Vito.png',
+      image: 'https://assetshost.sirv.com/jet2transport/Mercedes%20Vito.png',
       href: '/fleet/excel'
     },
     {
@@ -55,7 +55,7 @@ export default function FleetPage() {
       category: 'Executive Business XL',
       passengers: 8,
       luggage: 6,
-      image: '/images/Mercedes-Sprinter.png',
+      image: 'https://assetshost.sirv.com/jet2transport/Mercedes%20Sprinter.png',
       href: '/fleet/executive-business-excel'
     }
   ]

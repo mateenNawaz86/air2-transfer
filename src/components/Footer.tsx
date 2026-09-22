@@ -32,7 +32,7 @@ export default function Footer() {
           <div className="space-y-4">
             <Link href="/" className="inline-block">
               <Image
-                src="/logoair2-white.png"
+                src="https://assetshost.sirv.com/jet2transport/logoair2-white.png"
                 alt="Air2Transport"
                 width={200}
                 height={48}

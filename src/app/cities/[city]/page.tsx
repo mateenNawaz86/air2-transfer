@@ -129,7 +129,7 @@ export default async function CityPage({ params }: { params: Promise<{ city: str
             </div>
             <div className="bg-gray-100 h-64 rounded-lg overflow-hidden">
               <img
-                src={`/images/${city.slug}.jpg`}
+                src={`https://assetshost.sirv.com/jet2transport/${city.slug}.jpg`}
                 alt={`${city.name} cityscape`}
                 className="w-full h-full object-cover"
               />

@@ -248,7 +248,7 @@ export default function Header() {
           {/* Logo */}
           <Link href="/" className="flex items-center flex-shrink-0">
             <Image
-              src="/logoair2.png"
+              src="https://assetshost.sirv.com/jet2transport/logoair2.png"
               alt="Air2Transport"
               width={130}
               height={60}
