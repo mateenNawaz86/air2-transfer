@@ -19,11 +19,26 @@ import type { NextRequest } from 'next/server'
  * HTTPS is only forced when the proxy positively reports the original
  * request was HTTP via `x-forwarded-proto`; if that header is absent, we
  * do nothing rather than guess, since a wrong guess risks a redirect loop.
+ *
+ * Lowercasing applies to page URLs only, never to static assets. A file in
+ * public/ is served under its exact on-disk name, so rewriting the case of
+ * `/images/J2T_website_impovements.pdf-image-005.jpg` produces a path that
+ * does not exist and the image 404s. Page paths carry no file extension,
+ * so any request whose last segment has one is exempted from the case rule
+ * (it still gets the HTTPS and hostname canonicalisation, which are
+ * case-preserving and safe for assets).
  */
 
 const CANONICAL_HOST = 'air2transport.com'
 
 const ALTERNATE_HOSTS = new Set(['www.air2transport.com', 'jet2transport.com', 'www.jet2transport.com'])
+
+/**
+ * A request for a concrete file (an extension on the final path segment)
+ * rather than a page. `trailingSlash: true` means real page URLs end in a
+ * slash, so this only ever matches asset-shaped paths.
+ */
+const STATIC_ASSET_PATH = /\.[a-z0-9]+$/i
 
 export function middleware(request: NextRequest) {
   const hostHeader = (request.headers.get('host') ?? '').toLowerCase().replace(/:\d+$/, '')
@@ -37,13 +52,16 @@ export function middleware(request: NextRequest) {
   const url = request.nextUrl.clone()
   const needsHttps = request.headers.get('x-forwarded-proto') === 'http'
   const needsHostFix = isAlternateHost
-  const needsLowercase = url.pathname !== url.pathname.toLowerCase()
+  const isStaticAsset = STATIC_ASSET_PATH.test(url.pathname)
+  const needsLowercase = !isStaticAsset && url.pathname !== url.pathname.toLowerCase()
 
   if (needsHttps || needsHostFix || needsLowercase) {
     url.protocol = 'https:'
     url.hostname = CANONICAL_HOST
     url.port = ''
-    url.pathname = url.pathname.toLowerCase()
+    if (needsLowercase) {
+      url.pathname = url.pathname.toLowerCase()
+    }
     return NextResponse.redirect(url, 308)
   }
 
