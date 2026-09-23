@@ -22,6 +22,7 @@ import LocationInput from '@/components/LocationInput'
 import RouteMap from '@/components/RouteMap'
 import StripePaymentForm from '@/components/StripePaymentForm'
 import { SERVICE_TYPES, ServiceType, getDistance, calculatePrice } from '@/lib/googleMaps'
+import { PHONE_DISPLAY } from '@/lib/siteConfig'
 
 export default function NewBookingPage() {
   const router = useRouter()
@@ -158,18 +159,24 @@ export default function NewBookingPage() {
           setPrice(calculatedPrice)
         } catch (error) {
           console.error('Error calculating distance:', error)
-          
-          // Show user-friendly error message
-          const errorMessage = error instanceof Error ? error.message : 'Failed to calculate distance'
+
+          // Previously this fell back to an assumed 10-mile trip "for demo
+          // purposes" and priced the journey from it. That price is not just
+          // displayed: it is passed to the Stripe form as `amount` and stored
+          // on the booking record, so any failure here silently charged a
+          // 10-mile fare for a journey of any length — undercharging every
+          // longer trip. Leaving distance and price unset is the safe
+          // outcome: the submit handler refuses to take payment without a
+          // price and directs the customer to phone instead, so we never
+          // collect money against a fare we could not calculate.
+          setDistance(null)
+          setDuration(null)
+          setPrice(null)
+
           setMessageType('error')
-          setMessage(`Distance calculation failed: ${errorMessage}`)
-          
-          // Set fallback values for demo purposes
-          const fallbackDistance = 10 // Assume 10 miles as fallback
-          setDistance(fallbackDistance)
-          setDuration(20) // Assume 20 minutes as fallback
-          const fallbackPrice = calculatePrice(formData.serviceType, fallbackDistance)
-          setPrice(fallbackPrice)
+          setMessage(
+            `We couldn't calculate a fare for this route automatically. Please call us on ${PHONE_DISPLAY} and we'll confirm the price and book it for you.`
+          )
         } finally {
           setCalculatingDistance(false)
         }
@@ -445,7 +452,14 @@ export default function NewBookingPage() {
 
     if (!price || price <= 0) {
       setMessageType('error')
-      setMessage('Please wait for price calculation to complete')
+      // "Please wait" is only true while a calculation is actually running.
+      // If it has already failed, that message never resolves and leaves the
+      // customer stuck, so point them at a route that still works.
+      setMessage(
+        calculatingDistance
+          ? 'Please wait for price calculation to complete'
+          : `We couldn't calculate a fare for this route. Please call us on ${PHONE_DISPLAY} and we'll confirm the price and book it for you.`
+      )
       return
     }
 
